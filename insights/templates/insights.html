@@ -1,0 +1,364 @@
+{% extends "base.html" %} {% load staticfiles %}
+{% block extrahead %}
+<link href="{% static 'css/data.css' %}" rel="stylesheet"/>
+
+{% endblock %}
+{% load bootstrap_tags %} {% block content %}
+{% block row_header %}
+<div class="row header">
+    <div class="row">
+        <div class="col-xs-0 col-sm-0 col-md-4 col-lg-2 text-right">
+
+            <img src="{% static 'img/insights/' %}{{ sector_strings.1 }}-medium.jpg" class="img responsive img-header">
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-10">
+            <div class="row summary">
+                 <div class="box">
+                    <h5>{{sector_strings.0 }} in Ireland </h5>
+                    <a href="{% url 'insights:listing' sector=sector_strings.1 %}" class="btn-algorithm">View Companies</a>
+                </div>
+
+                <h6>Sector Companies: <b class="counter">{{count}}</b></h6>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row row-message">
+    {% if messages %} {% for message in messages %} {% if message.tags == "success" %}
+    <div class="alert alert-success">
+        <div class="messages text-center">
+            {{ message }}
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-danger">
+        <div class="messages text-center">
+            {{ message }}
+        </div>
+    </div>
+    {% endif %} {% endfor %}
+    {% else %}
+
+    {% endif %}
+</div>
+{% endblock %}
+<div class="dashboard-cards">
+    <div class="row row-cards">
+        <div class="col-md-3 no-padding">
+            <div class="row no-padding no-margin-bottom">
+                <div class="card insights-card">
+                    <div class="card-header">
+                        <img src="{% static 'img/insights/' %}{{ sector_strings.1 }}-small.jpg" class="img-responsive">
+                        <p><b>Linkedin Analytics</b> <br>{{sector_strings.0 }}</p>
+
+                    </div>
+                    <div class="row row-comment">
+                        {{sector_strings.0 }} with the tradition:
+                    </div>
+
+                    <div class="row-image">
+                        <div class="table-responsive">
+                            <table class="table table-established">
+                                <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th class="center">Established</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for element in oldest_10_dict %}
+                                <tr>
+                                    <td>{{element.name|truncatechars:40}}</td>
+                                    <td class="center">{{element.foundedYear}}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row no-padding">
+                <div class="card insights-card">
+                    <div class="card-header">
+                        <img src="{% static 'img/insights/' %}{{ sector_strings.1 }}-small.jpg" class="img-responsive">
+                        <p><b>Linkedin Analytics</b> <br>{{sector_strings.0 }}</p>
+                    </div>
+                    <div class="row row-comment">
+                        {{sector_strings.0 }} by followers count:
+                    </div>
+                    <div class="chart-small">
+                        <canvas id="followersChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 no-padding">
+            <div class="row no-padding">
+                <div class="card insights-card">
+                    <div class="card-header">
+                        <img src="{% static 'img/insights/' %}{{ sector_strings.1 }}-small.jpg" class="img-responsive">
+                        <p><b>Linkedin Analytics</b> <br>{{sector_strings.0 }}</p>
+
+                    </div>
+                    <div class="row row-comment">
+                        {{sector_strings.0 }} by type:
+                    </div>
+                    <div class="chart">
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row no-padding">
+                <div class="card insights-card">
+                    <div class="card-header">
+                        <img src="{% static 'img/insights/' %}{{ sector_strings.1 }}-small.jpg" class="img-responsive">
+                        <p><b>Linkedin Analytics</b> <br>{{sector_strings.0 }}</p>
+
+                    </div>
+                    <div class="row row-comment">
+                        {{sector_strings.0 }} by employee count:
+                    </div>
+                    <div class="chart">
+                        <canvas id="ecountChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 no-padding">
+            <div class="card insights-card">
+                <div class="card-header">
+                    <img src="{% static 'img/insights/' %}{{ sector_strings.1 }}-small.jpg" class="img-responsive">
+                    <p><b>Linkedin Analytics</b> <br>{{sector_strings.0 }}</p>
+                </div>
+                <div class="row row-comment">
+                    {{sector_strings.0 }} business specialties:
+                </div>
+                <div class="row-image">
+                    <div class="table-responsive">
+                        <table class="table table-established table-long">
+                            <thead>
+                            <tr>
+                                <th>Specialty</th>
+                                <th class="center">Occurence</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for key, value in spec_dict.items %}
+                            <tr>
+                                <td>{{ key }}</td>
+                                <td class="center">{{ value }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large">
+        <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+
+        <li><a class="btn-floating" href="{% url 'insights:companies' sector='finance' %}"><i class="material-icons">attach_money</i></a></li>
+        <li><a class="btn-floating" href="{% url 'insights:companies' sector='it' %}"><i class="material-icons">computer</i></a></li>
+        <li><a class="btn-floating" href="{% url 'insights:companies' sector='education' %}"><i class="material-icons">school</i></a></li>
+        <li><a class="btn-floating" href="{% url 'dashboard:dashboard' %}"><i class="material-icons">exit_to_app</i></a>
+        </li>
+    </ul>
+</div>
+
+
+
+
+ <script>
+    jQuery(document).ready(function($) {
+        $('.counter').counterUp({
+            delay: 10,
+            time: 400
+        });
+    });
+</script>
+
+
+<script>
+var ncx = document.getElementById('typeChart').getContext('2d');
+var typeChart = new Chart(ncx, {
+    // The type of chart we want to create
+    type: 'bar',
+    // The data for our dataset
+    data: {
+        labels: [{% for key, value in type_dict.items %}
+                    "{{key}}",
+                {% endfor %}],
+        datasets: [{
+            data: [{% for key, value in type_dict.items %}
+                    "{{value}}",
+                   {% endfor %}],
+            backgroundColor: [
+            '#4e79a7',    // color for data at index 0
+            '#f28e2b',   // color for data at index 1
+            '#e15759',  // color for data at index 2
+            '#76b7b2', // color for data at index 3
+            '#59a14f', // color for data at index 3
+            '#edc948', // color for data at index 3
+            //...
+        ],
+        }]
+    },
+    // Configuration options go here
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: { display: false },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+             xAxes: [{
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                }
+            }],
+        yAxes: [{
+            display: true,
+            gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                },
+            ticks: {
+                suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                // OR //
+                beginAtZero: true   // minimum value will be 0.
+            }
+        }]
+    }
+    }
+});
+
+
+
+
+
+
+</script>
+
+<script>
+var pcx = document.getElementById('followersChart').getContext('2d');
+varfollowersChart = new Chart(pcx, {
+    // The type of chart we want to create
+    type: 'bar',
+    // The data for our dataset
+    data: {
+        labels: [{% for key, value in followers_dict.items %}
+                    "{{key}}",
+                {% endfor %}],
+        datasets: [{
+            label: 'asd',
+            data: [{% for key, value in followers_dict.items %}
+                    "{{value}}",
+                   {% endfor %}],
+            backgroundColor: [
+            '#4e79a7',    // color for data at index 0
+            '#f28e2b',   // color for data at index 1
+        ],
+        }]
+    },
+    // Configuration options go here
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: { display: false },
+        scales: {
+
+        xAxes: [{
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                },
+                ticks: {
+                fontSize: 10,
+                suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                // OR //
+                beginAtZero: true   // minimum value will be 0.
+                }
+            }],
+        yAxes: [{
+            display: true,
+            gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                },
+            ticks: {
+                suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                // OR //
+                beginAtZero: true   // minimum value will be 0.
+            }
+        }]
+    }
+    }
+});
+
+
+</script>
+
+
+<script>
+var ecx = document.getElementById('ecountChart').getContext('2d');
+var ecountChart = new Chart(ecx, {
+    // The type of chart we want to create
+    type: 'bar',
+    // The data for our dataset
+    data: {
+        labels: [{% for key, value in e_count_dict.items %}
+                    "{{key}}",
+                {% endfor %}],
+        datasets: [{
+            data: [{% for key, value in e_count_dict.items %}
+                    "{{value}}",
+                   {% endfor %}],
+            backgroundColor: [
+            '#2b5b89','#356899', '#5789b6', '#7bb0d5', '#89bddc', '#90c3df', '#98c8e2', '#9ccae3', '#9ccae3'
+            //...
+        ],
+        }]
+    },
+    // Configuration options go here
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: { display: false },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+             xAxes: [{
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                }
+            }],
+        yAxes: [{
+            display: true,
+            gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                },
+            ticks: {
+                suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                // OR //
+                beginAtZero: true   // minimum value will be 0.
+            }
+        }]
+    }
+    }
+});
+
+
+
+
+</script>
+
+{% endblock %}
