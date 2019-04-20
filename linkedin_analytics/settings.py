@@ -26,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'test'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'https://linkedinanalytics.herokuapp.com/', '*']
+ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'https://linkedinanalytics1.herokuapp.com/', '*']
 
 
 # Application definition

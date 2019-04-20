@@ -165,7 +165,7 @@
 
 <div class="fixed-action-btn">
     <a class="btn-floating btn-large">
-        <i class="large material-icons">mode_edit</i>
+        <i class="large material-icons">menu</i>
     </a>
     <ul>
 
@@ -261,7 +261,7 @@ varfollowersChart = new Chart(pcx, {
                     "{{key}}",
                 {% endfor %}],
         datasets: [{
-            label: 'asd',
+            label: 'companies',
             data: [{% for key, value in followers_dict.items %}
                     "{{value}}",
                    {% endfor %}],

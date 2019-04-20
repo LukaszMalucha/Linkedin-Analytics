@@ -54,35 +54,35 @@
         <div class="col-md-4">
             <div class="card company-card">
                 <div class="card-header">
-                    <div class="row plain-element">
+                <div class="row plain-element">
                         <div class="col-md-4 plain-element">
                             <div class="card-image">
                                 <img src="{{ element.squareLogoUrl }}"
                                      class="img responsive">
                             </div>
-                        </div>
-                        <div class="col-md-8 plain-element">
-                            <div class="card-title text-left">
-                                <h5>{{element.name|truncatechars:40}}</h5>
-                                <table class="table table-company">
-                                    <tbody>
-                                    <tr>
-                                        <td>Co. Type:</td>
-                                        <td><b>{{ element.companyType }}</b></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Industry:</td>
-                                        <td><b>{{ element.industries }}</b></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Employees:</td>
-                                        <td><b>{{ element.employeeCountRange }}</b></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
                             </div>
+                        <div class="col-md-8 plain-element">
+                        <div class="card-title text-left">
+                            <h5>{{element.name|truncatechars:40}}</h5>
+                            <table class="table table-company">
+                                <tbody>
+                                <tr>
+                                    <td>Co. Type:</td>
+                                    <td><b>{{ element.companyType }}</b></td>
+                                </tr>
+                                <tr>
+                                    <td>Industry:</td>
+                                    <td><b>{{ element.industries }}</b></td>
+                                </tr>
+                                <tr>
+                                    <td>Employees:</td>
+                                    <td><b>{{ element.employeeCountRange }}</b></td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
+                       </div>
+                </div>
                 </div>
                 <div class="card-content">
                     <p>Company established in {{ element.foundedYear }}.
@@ -101,7 +101,7 @@
 
 <div class="fixed-action-btn">
     <a class="btn-floating btn-large">
-        <i class="large material-icons">mode_edit</i>
+        <i class="large material-icons">menu</i>
     </a>
     <ul>
 
@@ -124,6 +124,10 @@
             time: 400
         });
     });
+
+
+
+
 
 
 </script>
@@ -181,7 +185,6 @@ var typeChart = new Chart(ncx, {
     }
     }
 });
-
 
 
 
@@ -257,7 +260,6 @@ varfollowersChart = new Chart(pcx, {
 
 
 
-
 </script>
 
 
@@ -308,7 +310,6 @@ var ecountChart = new Chart(ecx, {
     }
     }
 });
-
 
 
 

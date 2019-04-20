@@ -8,21 +8,29 @@ import re
 def companies(request, sector):
     # If needed for database
     # database_upload()
-
-    context = sector_insights(sector)
+    try:
+        context = sector_insights(sector)
+    except:
+        return render(request, "dashboard.html")
 
     return render(request, "insights.html", context)
 
 
 def listing(request, sector):
-    context = sector_listing(sector)
-
+    
+    try:
+        context = sector_listing(sector)
+    except:    
+        return render(request, "dashboard.html")
+        
     return render(request, "listing.html", context)
 
 
 def company_search(request):
-
-    context = find_company(request.GET['query'])
-
+    
+    try:
+        context = find_company(request.GET['query'])
+    except:
+        return render(request, "dashboard.html")
 
     return render(request, "company_search.html", context)

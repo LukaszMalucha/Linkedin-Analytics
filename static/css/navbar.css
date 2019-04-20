@@ -103,7 +103,7 @@ nav ul b {
 }
 
 .dropdown-content {
-    width: 150px !important;
+    width: auto;
     right: -50px !important;
     top: 60px !important;
 
