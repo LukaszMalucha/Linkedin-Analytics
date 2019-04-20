@@ -28,7 +28,7 @@ SECRET_KEY = 'test'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'https://linkedinanalytics1.herokuapp.com/', '*']
+ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'https://linkedinanalytics1.herokuapp.com/', 'https://linkedinanalytics.herokuapp.com/', '*']
 
 
 # Application definition
