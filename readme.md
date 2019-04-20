@@ -1,7 +1,7 @@
 # LinkedIn Analytics
 
 
-#### [Visit App on Heroku](https://linkedinanalytics.herokuapp.com/)
+#### [Visit App on Heroku](https://linkedinanalytics1.herokuapp.com/)
 
 
 ## Project Description
