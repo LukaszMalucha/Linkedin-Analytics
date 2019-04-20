@@ -1,7 +1,8 @@
 # LinkedIn Analytics
 
 
-#### [Visit App on Heroku](https://linkedinanalytics.herokuapp.com/)
+![1](https://user-images.githubusercontent.com/26208598/54323062-84431580-45ef-11e9-9598-17a44a6efc29.JPG)
+
 
 
 ## Project Description
