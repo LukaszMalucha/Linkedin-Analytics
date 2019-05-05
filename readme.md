@@ -1,6 +1,6 @@
 # LinkedIn Analytics
 
-#### [Visit the App](https://linkedinanalytics1.herokuapp.com/)
+#### [Visit the App](https://linkedinanalytics.herokuapp.com/)
 
 <br>
 
