@@ -454,10 +454,15 @@ textarea.materialize-textarea:focus:not([readonly]) {
     width: 100%;
     }
 
+    .fixed-action-btn {
+    right: 10px;
+    }
+
+
 }
 
 
-@media(max-width:992px) {
+@media(max-width:1024px) {
 
     .company-card {
         width: 50%;

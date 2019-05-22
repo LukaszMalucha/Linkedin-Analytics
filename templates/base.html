@@ -31,6 +31,22 @@
     <!-- Material Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {% block extrahead %}{% endblock %} {% block head_js %} {% endblock head_js %}
+     <style>
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-weight: 400 500;
+        src: url('{% static 'fonts/TTF/SourceSansPro-Regular.ttf' %}');
+      }
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-weight: bold 600;
+        src: url('{% static 'fonts/TTF/SourceSansPro-Semibold.ttf' %}');
+      }
+      @font-face {
+        font-family: 'Raleway';
+        src: url('{% static 'fonts/TTF/Raleway-Regular.ttf' %}');
+      }
+    </style>
 
 </head>
 
