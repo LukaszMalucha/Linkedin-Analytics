@@ -1,4 +1,5 @@
 {% extends "base.html" %} {% load staticfiles %}
+{% load i18n %}
 {% block extrahead %}
 <link href="{% static 'css/data.css' %}" rel="stylesheet"/>
 {% endblock %}
@@ -8,6 +9,8 @@
 
 </div>
 <div class="row row-message">
+    {% get_current_language as LANGUAGE_CODE %}
+    <h1>{{ LANGUAGE_CODE }}</h1>
     {% if messages %} {% for message in messages %} {% if message.tags == "success" %}
     <div class="alert alert-success">
         <div class="messages text-center">
@@ -31,7 +34,7 @@
         <div class="col-md-4">
             <div class="card menu-card">
                 <div class="card-top">
-                    <i class="fas fa-chart-bar"></i> Financial Sector
+                    <i class="fas fa-chart-bar"></i> {% trans "Financial Sector" %}
                 </div>
                 <div class="card-header">
                     <img src="{% static 'img/portrait.png' %}" class="img-responsive">
@@ -115,8 +118,11 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+
+
+
 </div>
 
 {% endblock %}

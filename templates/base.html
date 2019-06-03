@@ -1,5 +1,5 @@
 {% load staticfiles %}
-{% load il8n %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html>
 
@@ -56,7 +56,7 @@
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
             <a class="navbar-brand waves-effect waves-dark" href="{% url 'dashboard:dashboard' %}"><i
-                    class="fab fa-linkedin-in"></i><strong>LinkedIn Analytics</strong></a>
+                    class="fab fa-linkedin-in"></i><strong>{% trans "LinkedIn Analytics" %}  </strong></a>
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
@@ -78,7 +78,7 @@
                 {% if user.is_authenticated %}
                 {{ user }}
                 {% else %}
-                Login/Register
+                {% trans "Login/Register" %}
                 {% endif %}
             </b></a></li>
             <li><a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" id="trigger">menu</i></a>

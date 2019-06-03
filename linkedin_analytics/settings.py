@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-# import env
+import env
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "test"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'https://linkedinanalytics1.herokuapp.com/', 'https://linkedinanalytics.herokuapp.com/', '*']
 
@@ -52,17 +52,19 @@ INSTALLED_APPS = [
     'insights',
 
 
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware'
+
 ]
 
 ROOT_URLCONF = 'linkedin_analytics.urls'
@@ -76,6 +78,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -133,10 +136,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'locale')
-
-]
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, "locale"),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -154,8 +156,8 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")                 
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME    
 
-STATICFILES_LOCATION = 'static'                                                 ## comment out for testing
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'                           ## comment out for testing
+# STATICFILES_LOCATION = 'static'                                                 ## comment out for testing
+# STATICFILES_STORAGE = 'custom_storages.StaticStorage'                           ## comment out for testing
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
@@ -173,3 +175,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
+
+LANGUAGES = (
+    ('pl', ('Polish')),
+    ('en', ('English')),
+    ('fr', ('French')),
+)
