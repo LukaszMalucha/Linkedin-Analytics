@@ -1,5 +1,5 @@
 {% load staticfiles %}
-{% load static i18n %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 
@@ -62,7 +62,7 @@
             <li>
                 <form action="{% url 'insights:company_search' %}" class="browser-default right" id="search-form">
                     <i class="fas fa-search" id="search-icon"></i>
-                    <input id="search-input" placeholder="Find Company" type="text" class="browser-default search-field"
+                    <input id="search-input" placeholder="{% trans 'Find Company' %}" type="text" class="browser-default search-field"
                            name="query" value="" autocomplete="off" aria-label="Search box">
                     <label for="search-input"></label>
                     <i class="material-icons search-close-icon">cancel</i>
@@ -89,10 +89,10 @@
     <!-- DROPDOWN -->
     <ul id="dropdown-user" class="dropdown-content">
         {% if user.is_authenticated %}
-        <li><a href="{% url 'user:logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+        <li><a href="{% url 'user:logout' %}"><i class="fas fa-sign-out-alt"></i> {% trans "Log Out" %}</a></li>
         {% else %}
-        <li><a href="{% url 'user:login' %}"><i class="fa fa-user fa-fw"></i> Log In</a></li>
-        <li><a href="{% url 'user:register' %}"><i class="fas fa-tasks"></i> Register</a></li>
+        <li><a href="{% url 'user:login' %}"><i class="fa fa-user fa-fw"></i> {% trans "Log In" %}</a></li>
+        <li><a href="{% url 'user:register' %}"><i class="fas fa-tasks"></i> {% trans "Register" %}</a></li>
         {% endif %}
     </ul>
 
@@ -107,12 +107,12 @@
         </li>
         {% if user.is_authenticated %}
         <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:logout' %}"><i
-                class="fas fa-sign-out-alt"></i><b> Log Out {{ user.name }}</b></a></li>
+                class="fas fa-sign-out-alt"></i><b> {% trans "Log Out" %} {{ user.name }}</b></a></li>
         {% else %}
         <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:login' %}"><i
-                class="fa fa-user"></i><b> Log In</b></a></li>
+                class="fa fa-user"></i><b> {% trans "Log In" %}</b></a></li>
         <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:register' %}"><i
-                class="fas fa-tasks"></i><b> Register</b></a></li>
+                class="fas fa-tasks"></i><b> {% trans "Register" %}</b></a></li>
         {% endif %}
         <br>
         <li>
@@ -141,7 +141,7 @@
 <!-- /. WRAPPER  -->
 <div class="footer">
     <p><a target="_blank" href="https://www.freeprivacypolicy.com/privacy/view/9b972ff9a2aaeda03f07216c15625791/">Privacy
-        Policy</a> • © 2019 - 2020 www.unflasked.com - All Rights Reserved • Powered by Septellar &trade;</p>
+        Policy</a> • © 2019 - 2020 www.unflasked.com - {% trans "All Rights Reserved" %} • {% trans "Powered by Septellar" %} &trade;</p>
 </div>
 <!-- Bootstrap Js -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"

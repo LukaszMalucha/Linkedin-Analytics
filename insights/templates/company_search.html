@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load staticfiles %}
+{% extends "base.html" %} {% load i18n %}{% load staticfiles %}
 {% block extrahead %}
 <link href="{% static 'css/data.css' %}" rel="stylesheet"/>
 
@@ -85,11 +85,11 @@
                 </div>
                 </div>
                 <div class="card-content">
-                    <p>Company established in {{ element.foundedYear }}.
-                        {{element.name|truncatechars:40}} specializes in: {{ element.specialties|truncatechars:160 }}
+                    <p>{% trans "Company established in" %} {{ element.foundedYear }}.
+                        {{element.name|truncatechars:40}} {% trans "specializes in" %}: {{ element.specialties|truncatechars:160 }}
                     </p>
                     <br>
-                    <td>Website:</td>
+                    <td>{% trans "Website" %}:</td>
                     <td><b class="company_website">{{ element.websiteUrl|truncatechars:40 }}</b></td>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load staticfiles %}
+{% extends "base.html" %} {% load i18n %}{% load staticfiles %}
 {% block extrahead %}
 <link href="{% static 'css/data.css' %}" rel="stylesheet"/>
 
@@ -15,10 +15,10 @@
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-10">
             <div class="row summary">
                 <div class="box">
-                    <h5>{{sector_strings.0 }} Listing </h5>
+                    <h5>{{sector_strings.0 }} {% trans "Listing" %} </h5>
                 </div>
 
-                <h6>Sector Companies: <b class="counter">{{count}}</b></h6>
+                <h6>{% trans "Sector Companies" %}: <b class="counter">{{count}}</b></h6>
 
 
             </div>
@@ -85,9 +85,9 @@
                 </div>
                 </div>
                 <div class="card-content">
-                    <p>Company established in {{ element.foundedYear }}. {{element.name|truncatechars:40}} specializes in: {{ element.specialties|truncatechars:160 }}</p>
+                    <p>{% trans "Company established in" %} {{ element.foundedYear }}. {{element.name|truncatechars:40}} {% trans "specializes in" %}: {{ element.specialties|truncatechars:160 }}</p>
                     <br>
-                    <td>Website:  </td>
+                    <td>{% trans "Website" %}:  </td>
                     <td><b class="company_website">{{ element.websiteUrl|truncatechars:40 }}</b></td>
                 </div>
 

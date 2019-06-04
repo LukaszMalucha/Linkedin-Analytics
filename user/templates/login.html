@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load staticfiles %}{% load materializecss %}
+{% extends "base.html" %} {% load i18n %}{% load staticfiles %}{% load materializecss %}
 {% block extrahead %}
 <link href="{% static 'css/forms.css' %}" rel="stylesheet"/>
 {% endblock %}
@@ -31,15 +31,15 @@
         <i class="material-icons" id="icon-login">lock</i>
         <fieldset class="form-box">
             <div class="row text-center">
-                <h4>Login User</h4>
+                <h4>{% trans "Login User" %}</h4>
             </div>
             <div class="row text-center">
                 <div class="input-field col s6">
                     <div class="input-field col s12 field-description">
-                        <h6>Your Email Address:</h6>
+                        <h6>{% trans "Your Email Address" %}:</h6>
                     </div>
                     <div class="input-field col s12 field-description">
-                        <h6>Your Password:</h6>
+                        <h6>{% trans "Your Password" %}:</h6>
                     </div>
                 </div>
                 <div class="input-field col s6">
@@ -48,9 +48,9 @@
                 </div>
             </div>
             <div class="row text-center">
-                <a href="{% url 'user:password_reset' %}">Forgot my password</a>
+                <a href="{% url 'user:password_reset' %}">{% trans "Forgot my password" %}</a>
             </div>
-            <button type="submit" class="btn-login"><span>Continue <i class="far fa-arrow-alt-circle-right"></i></span>
+            <button type="submit" class="btn-login"><span>{% trans "Continue" %} <i class="far fa-arrow-alt-circle-right"></i></span>
             </button>
         </fieldset>
     </form>

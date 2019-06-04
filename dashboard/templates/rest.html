@@ -11,7 +11,7 @@
 <nav class="navbar navbar-default top-navbar" role="navigation">
     <div class="navbar-header">
             <a class="navbar-brand waves-effect waves-dark" href="{% url 'dashboard:dashboard' %}"><i
-                    class="fab fa-linkedin-in"></i><strong>LinkedIn Analytics</strong></a>
+                    class="fab fa-linkedin-in"></i><strong>{% trans "LinkedIn Analytics" %}</strong></a>
         </div>
     <ul class="nav navbar-nav pull-right">
         <li><a class="nav-link" href="{% url 'dashboard:rest' %}"><i class="fas fa-terminal"></i><b>REST Api</b></a>
@@ -36,32 +36,32 @@
     <div class="row" style=" height:100px"></div>
     <div class="container text-center welcome">
         <div class="row">
-            <h3>REST API Navigation</h3>
+            <h3>{% trans "REST API Navigation" %}</h3>
         </div>
         <br>
         <div class="row text-left view-row">
-            <h5>User:</h5>
+            <h5>{% trans "User" %}:</h5>
         </div>
         <div class="row">
             <div class="col-md-6 col-lg-4 text-center btn-col">
-                <button onclick="window.location='{% url 'api:create' %}'" class="btn route"><b>Register</b></button>
+                <button onclick="window.location='{% url 'api:create' %}'" class="btn route"><b>{% trans "Register" %}</b></button>
             </div>
             <div class="col-md-6 col-lg-4 text-center btn-col">
-                <button onclick="window.location='{% url 'api:authenticate' %}'" class="btn route"><b>Authenticate</b>
+                <button onclick="window.location='{% url 'api:authenticate' %}'" class="btn route"><b>{% trans "Authenticate" %}</b>
                 </button>
             </div>
             <div class="col-md-6 col-lg-4 text-center btn-col">
-                <button onclick="window.location='{% url 'api:my_account' %}'" class="btn route"><b>User Details</b>
+                <button onclick="window.location='{% url 'api:my_account' %}'" class="btn route"><b>{% trans "User Details" %}</b>
                 </button>
             </div>
         </div>
         <div class="row text-left view-row">
-            <h5>Companies:</h5>
+            <h5>{% trans "Companies" %}:</h5>
         </div>
         <div class="row">
             <div class="col-md-6 col-lg-4 text-center btn-col">
                 <button onclick="window.location='{% url 'api:companies-list' %}'" class="btn route"><b>
-                    Companies
+                    {% trans "Companies" %}
                 </b></button>
             </div>
         </div>

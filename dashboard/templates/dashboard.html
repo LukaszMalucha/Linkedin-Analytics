@@ -9,8 +9,6 @@
 
 </div>
 <div class="row row-message">
-    {% get_current_language as LANGUAGE_CODE %}
-    <h1>{{ LANGUAGE_CODE }}</h1>
     {% if messages %} {% for message in messages %} {% if message.tags == "success" %}
     <div class="alert alert-success">
         <div class="messages text-center">
@@ -38,7 +36,7 @@
                 </div>
                 <div class="card-header">
                     <img src="{% static 'img/portrait.png' %}" class="img-responsive">
-                    <p><b>Lukasz Malucha</b> <br>Python Developer</p>
+                    <p><b>{% trans "Lukasz Malucha" %}</b> <br>Python Developer</p>
                     <div class="dots">
                         &#9642;
                         &#9642;
@@ -47,13 +45,13 @@
                 </div>
                 <div class="card-content">
                     <div class="row row-comment">
-                        Visualizing <b>Financial Companies</b> located in Ireland
+                        {% trans "Visualizing" %} <b>{% trans "Financial Companies" %}</b> {% trans "located in Ireland" %}
                     </div>
 
                     <div class="row row-image">
                         <img src="{% static 'img/finance.jpg' %}" class="img-responsive">
                     </div>
-                    <button onclick="window.location='{% url 'insights:companies' sector='finance' %}'" type="submit" class="btn btn-enter"><span>Continue <i
+                    <button onclick="window.location='{% url 'insights:companies' sector='finance' %}'" type="submit" class="btn btn-enter"><span>{% trans "Continue" %} <i
                             class="far fa-arrow-alt-circle-right"></i></span></button>
                 </div>
                 <div class="card-bottom">
@@ -63,11 +61,11 @@
         <div class="col-md-4">
             <div class="card menu-card">
                 <div class="card-top">
-                    <i class="fa fa-laptop"></i> IT Sector
+                    <i class="fa fa-laptop"></i> {% trans "IT Sector" %}
                 </div>
                 <div class="card-header">
                     <img src="{% static 'img/portrait.png' %}" class="img-responsive">
-                    <p><b>Lukasz Malucha</b> <br>Python Developer</p>
+                    <p><b>{% trans "Lukasz Malucha" %}</b> <br>Python Developer</p>
                     <div class="dots">
                         &#9642;
                         &#9642;
@@ -76,13 +74,13 @@
                 </div>
                 <div class="card-content">
                     <div class="row row-comment">
-                        Visualizing <b>IT Companies </b> located in Ireland
+                        {% trans "Visualizing" %} <b>{% trans "IT Companies" %}</b> {% trans "located in Ireland" %}
                     </div>
 
                     <div class="row row-image">
                         <img src="{% static 'img/it.jpg' %}" class="img-responsive">
                     </div>
-                    <button onclick="window.location='{% url 'insights:companies' sector='it' %}'" type="submit" class="btn btn-enter"><span>Continue <i
+                    <button onclick="window.location='{% url 'insights:companies' sector='it' %}'" type="submit" class="btn btn-enter"><span>{% trans "Continue" %} <i
                             class="far fa-arrow-alt-circle-right"></i></span></button>
                 </div>
                 <div class="card-bottom">
@@ -92,11 +90,11 @@
         <div class="col-md-4">
             <div class="card menu-card">
                 <div class="card-top">
-                    <i class="fa fa-graduation-cap"></i> Educational Institutions
+                    <i class="fa fa-graduation-cap"></i> {% trans "Educational Institutions" %}
                 </div>
                 <div class="card-header">
                     <img src="{% static 'img/portrait.png' %}" class="img-responsive">
-                    <p><b>Lukasz Malucha</b> <br>Python Developer</p>
+                    <p><b>{% trans "Lukasz Malucha" %}</b> <br>{% trans "Python Developer" %}</p>
                     <div class="dots">
                         &#9642;
                         &#9642;
@@ -105,13 +103,13 @@
                 </div>
                 <div class="card-content">
                     <div class="row row-comment">
-                        Visualizing <b>Educational Institutions</b> located in Ireland.
+                        {% trans "Visualizing" %} <b>{% trans "Educational Institutions" %}</b> {% trans "located in Ireland" %}
                     </div>
 
                     <div class="row row-image">
                         <img src="{% static 'img/college.jpg' %}" class="img-responsive">
                     </div>
-                    <button onclick="window.location='{% url 'insights:companies' sector='education' %}'" type="submit" class="btn btn-enter"><span>Continue <i
+                    <button onclick="window.location='{% url 'insights:companies' sector='education' %}'" type="submit" class="btn btn-enter"><span>{% trans "Continue" %} <i
                             class="far fa-arrow-alt-circle-right"></i></span></button>
                 </div>
                 <div class="card-bottom">

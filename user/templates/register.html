@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load staticfiles %}{% load materializecss %}
+{% extends "base.html" %} {% load i18n %}{% load staticfiles %}{% load materializecss %}
 {% block extrahead %}
 <link href="{% static 'css/forms.css' %}" rel="stylesheet"/>
 {% endblock %}
@@ -32,24 +32,24 @@
         <i class="material-icons" id="icon-login">assignment_turned_in</i>
         <fieldset class="form-box">
             <div class="row text-center">
-                <h4>Register User</h4>
+                <h4>{% trans "Register User" %}</h4>
             </div>
             <div class="row text-center">
-                <p>Already got an account? <a href="{% url 'user:login' %}">Log In</a></p>
+                <p>{% trans "Already got an account" %}? <a href="{% url 'user:login' %}">{% trans "Log In" %}</a></p>
             </div>
             <div class="row text-center">
                 <div class="input-field col s6">
                     <div class="input-field col s12 field-description">
-                        <h6>Your Email Address:</h6>
+                        <h6>{% trans "Your Email Address" %}:</h6>
                     </div>
                     <div class="input-field col s12 field-description">
-                        <h6>Your Username:</h6>
+                        <h6>{% trans "Your Username" %}:</h6>
                     </div>
                     <div class="input-field col s12 field-description">
-                        <h6>Your Password:</h6>
+                        <h6>{% trans "Your Password" %}:</h6>
                     </div>
                     <div class="input-field col s12 field-description">
-                        <h6>Confirm Password:</h6>
+                        <h6>{% trans "Confirm Password" %}:</h6>
                     </div>
                 </div>
                 <div class="input-field col s6">

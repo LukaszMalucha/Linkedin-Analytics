@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 
@@ -30,18 +31,18 @@
     <div class="robot"><img src="https://s3-eu-west-1.amazonaws.com/flask-static-files/static/img/robot404.png" width="300" height="350"
                             alt="Robot 404"/></div>
 
-    <div class="header"><span class="largeFont">Oops!</span> The Page you requested was not found</div>
+    <div class="header"><span class="largeFont">{% trans "Oops" %}!</span> {% trans "The Page you requested was not found" %}</div>
     <br clear="right"/>
 
     <div class="mainContent">
-        <p>HTTP 404 Error - The page you are were looking for appears <br> to have been moved, deleted or does not exist</p>
+        <p>{% trans "HTTP 404 Error" %} - {% trans "The page you are were looking for appears" %} <br> {% trans "to have been moved, deleted or does not exist" %}</p>
 
-        <p><strong>You can try:</strong></p>
+        <p><strong>{% trans "You can try" %}:</strong></p>
         <ul>
-            <li>Visit the <a href="{% url 'dashboard:dashboard' %}">Homepage</a>
+            <li>{% trans "Visit the" %} <a href="{% url 'dashboard:dashboard' %}">{% trans "Homepage" %}</a>
             </li>
-            <li>Make sure that the address is spelled correctly</li>
-            <li>Go to <a href="javascript:history.go(-1);">previous</a> page
+            <li>{% trans "Make sure that the address is spelled correctly" %}</li>
+            <li>{% trans "Go to" %} <a href="javascript:history.go(-1);">{% trans "previous" %}</a> {% trans "page" %}
             </li>
         </ul>
     </div>

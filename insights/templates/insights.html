@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load staticfiles %}
+{% extends "base.html" %} {% load i18n %}{% load staticfiles %}
 {% block extrahead %}
 <link href="{% static 'css/data.css' %}" rel="stylesheet"/>
 
@@ -15,11 +15,11 @@
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-10">
             <div class="row summary">
                  <div class="box">
-                    <h5>{{sector_strings.0 }} in Ireland </h5>
-                    <a href="{% url 'insights:listing' sector=sector_strings.1 %}" class="btn-algorithm">View Companies</a>
+                    <h5>{{sector_strings.0 }} {% trans "in Ireland" %} </h5>
+                    <a href="{% url 'insights:listing' sector=sector_strings.1 %}" class="btn-algorithm">{% trans "View Companies" %}</a>
                 </div>
 
-                <h6>Sector Companies: <b class="counter">{{count}}</b></h6>
+                <h6>{% trans "Sector Companies" %}: <b class="counter">{{count}}</b></h6>
 
 
             </div>
@@ -52,11 +52,11 @@
                 <div class="card insights-card">
                     <div class="card-header">
                         <img src="{% static 'img/insights/' %}{{ sector_strings.1 }}-small.jpg" class="img-responsive">
-                        <p><b>Linkedin Analytics</b> <br>{{sector_strings.0 }}</p>
+                        <p><b>{% trans "Linkedin Analytics" %}</b> <br>{{sector_strings.0 }}</p>
 
                     </div>
                     <div class="row row-comment">
-                        {{sector_strings.0 }} with the tradition:
+                        {{sector_strings.0 }} {% trans "with the tradition" %}:
                     </div>
 
                     <div class="row-image">
@@ -64,8 +64,8 @@
                             <table class="table table-established">
                                 <thead>
                                 <tr>
-                                    <th>Company</th>
-                                    <th class="center">Established</th>
+                                    <th>{% trans "Company" %}</th>
+                                    <th class="center">{% trans "Established" %}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -85,10 +85,10 @@
                 <div class="card insights-card">
                     <div class="card-header">
                         <img src="{% static 'img/insights/' %}{{ sector_strings.1 }}-small.jpg" class="img-responsive">
-                        <p><b>Linkedin Analytics</b> <br>{{sector_strings.0 }}</p>
+                        <p><b>{% trans "Linkedin Analytics" %}</b> <br>{{sector_strings.0 }}</p>
                     </div>
                     <div class="row row-comment">
-                        {{sector_strings.0 }} by followers count:
+                        {{sector_strings.0 }} {% trans "by followers count" %}:
                     </div>
                     <div class="chart-small">
                         <canvas id="followersChart"></canvas>
@@ -102,11 +102,11 @@
                 <div class="card insights-card">
                     <div class="card-header">
                         <img src="{% static 'img/insights/' %}{{ sector_strings.1 }}-small.jpg" class="img-responsive">
-                        <p><b>Linkedin Analytics</b> <br>{{sector_strings.0 }}</p>
+                        <p><b>{% trans "Linkedin Analytics" %}</b> <br>{{sector_strings.0 }}</p>
 
                     </div>
                     <div class="row row-comment">
-                        {{sector_strings.0 }} by type:
+                        {{sector_strings.0 }} {% trans "by type" %}:
                     </div>
                     <div class="chart">
                         <canvas id="typeChart"></canvas>
@@ -117,11 +117,11 @@
                 <div class="card insights-card">
                     <div class="card-header">
                         <img src="{% static 'img/insights/' %}{{ sector_strings.1 }}-small.jpg" class="img-responsive">
-                        <p><b>Linkedin Analytics</b> <br>{{sector_strings.0 }}</p>
+                        <p><b>{% trans "Linkedin Analytics" %}</b> <br>{{sector_strings.0 }}</p>
 
                     </div>
                     <div class="row row-comment">
-                        {{sector_strings.0 }} by employee count:
+                        {{sector_strings.0 }} {% trans "by employee count" %}:
                     </div>
                     <div class="chart">
                         <canvas id="ecountChart"></canvas>
@@ -133,18 +133,18 @@
             <div class="card insights-card">
                 <div class="card-header">
                     <img src="{% static 'img/insights/' %}{{ sector_strings.1 }}-small.jpg" class="img-responsive">
-                    <p><b>Linkedin Analytics</b> <br>{{sector_strings.0 }}</p>
+                    <p><b>{% trans "Linkedin Analytics" %}</b> <br>{{sector_strings.0 }}</p>
                 </div>
                 <div class="row row-comment">
-                    {{sector_strings.0 }} business specialties:
+                    {{sector_strings.0 }} {% trans "business specialties" %}:
                 </div>
                 <div class="row-image">
                     <div class="table-responsive">
                         <table class="table table-established table-long">
                             <thead>
                             <tr>
-                                <th>Specialty</th>
-                                <th class="center">Occurence</th>
+                                <th>{% trans "Specialty" %}</th>
+                                <th class="center">{% trans "Occurence" %}</th>
                             </tr>
                             </thead>
                             <tbody>
