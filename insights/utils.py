@@ -5,7 +5,7 @@ import csv
 import re
 import pandas as pd
 from sklearn.preprocessing import MultiLabelBinarizer
-
+from django.utils.translation import gettext as _
 # FILE PATHS
 
 companies_path = os.path.join(settings.BASE_DIR, "insights/datasets/companies.csv")
@@ -39,12 +39,16 @@ def sector_insights(sector):
     if sector == 'finance':
         sector = 'Financial'
         sector_strings = ['Financial Companies', 'finance']
+        translated_sector_strings = [_('Financial Companies'), _('finance')]
+
     elif sector == 'education':
         sector = 'EDUCATION'
         sector_strings = ['Educational Institutions', 'education']
+        translated_sector_strings = [_('Educational Institutions'), _('education')]
     else:
         sector = "IT"
         sector_strings = ['IT Companies', 'it']
+        translated_sector_strings = [_('IT Companies'), _('it')]
 
     # Django queryset to pandas dataframe for analytics:
 
@@ -110,7 +114,8 @@ def sector_insights(sector):
     sector_dict = {'count': count, 'oldest_10_dict': oldest_10_dict,
                    'sector_strings': sector_strings,
                    'spec_dict': spec_dict, 'type_dict': type_dict,
-                   'e_count_dict': e_count_dict, 'followers_dict': followers_dict}
+                   'e_count_dict': e_count_dict, 'followers_dict': followers_dict,
+                   'translated_sector_strings': translated_sector_strings}
 
     return sector_dict
 

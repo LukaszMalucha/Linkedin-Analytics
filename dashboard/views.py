@@ -17,9 +17,3 @@ def error_500(request):
 
 
 
-# def dashboard(request):
-#
-#     from django.utils import translation
-#     user_language = 'pl'
-#     translation.activate(user_language)
-#     request.session[translation.LANGUAGE_SESSION_KEY] = user_language
