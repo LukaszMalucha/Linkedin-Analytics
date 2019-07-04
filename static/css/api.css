@@ -99,7 +99,7 @@ p {
 
 
 .route {
-    font-weight: normal;
+    font-weight: 400;
     width: 100%;
     font-size: 0.8rem;
 }
@@ -141,7 +141,7 @@ nav {
 
 .navbar .nav li a{
     color: white;
-    height: 59px !important;
+    height: 42px !important;
 }
 
 

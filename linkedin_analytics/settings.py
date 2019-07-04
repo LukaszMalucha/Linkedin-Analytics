@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "test"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'https://linkedinanalytics1.herokuapp.com/', 'https://linkedinanalytics.herokuapp.com/', '*']
 
@@ -156,8 +156,8 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")                 
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME    
 
-# STATICFILES_LOCATION = 'static'                                                 ## comment out for testing
-# STATICFILES_STORAGE = 'custom_storages.StaticStorage'                           ## comment out for testing
+STATICFILES_LOCATION = 'static'                                                 ## comment out for testing
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'                           ## comment out for testing
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (

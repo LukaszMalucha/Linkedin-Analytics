@@ -8,8 +8,8 @@
 
 
 .top-navbar .navbar-brand strong {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 600;
     display: block;
     color: white;
 
@@ -24,7 +24,8 @@
     width: 100%;
     z-index: 300;
     border: none;
-    height: 60px;
+    height: 42px;
+    min-height: 42px;
     padding-left: 16%;
     padding-right: 16%;
     padding-top: 0px;
@@ -35,10 +36,10 @@
 .top-navbar .navbar-brand {
     margin: 0px;
     width: 100%;
-    height: 60px;
+    height: 42px;
     text-align: left;
-    padding: 17px 5px 17px 5px;
-    font-weight: 700;
+    padding: 14px 5px 5px 5px;
+    font-weight: 600;
     color: white;
     background: transparent;
 }
@@ -48,9 +49,9 @@
 
 .navbar-brand  .material-icons, .navbar-brand .fab {
     float: left;
-    font-size: 20px;
+    font-size: 18px;
     margin-right: 5px;
-    margin-top: -2px;
+    margin-top: -3px;
     height: auto;
     background: #0077b5;
     padding: 3px 3px 3px 3px;
@@ -62,12 +63,13 @@
 .nav > li > a {
     padding-top: 0px;
     padding-bottom: 0px;
+    font-size: 13px;
 
 }
 
 .nav-link {
     height: 100% !important;
-    padding: 20px 15px 20px 15px !important;
+    padding: 16px 15px 6px 15px !important;
 }
 
 
@@ -99,14 +101,13 @@
 }
 
 nav ul b {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .dropdown-content {
     width: auto;
     right: -50px !important;
-    top: 60px !important;
-
+    top: 42px !important;
 }
 
 .dropdown-content li>a {
@@ -125,13 +126,13 @@ nav ul b {
 }
 
 .sidenav-trigger {
-    height: 60px !important;
+    height: 42px !important;
 
 
 }
 
 .sidenav-trigger i {
-    font-weight: bold;
+    font-weight: 600;
 
 }
 
@@ -181,7 +182,7 @@ nav form {
   position: relative;
   height: 100%;
   background: inherit;
-  padding: 13px 15px 12px 0px;
+  padding: 12px 15px 6px 0px;
 }
 
 
@@ -209,7 +210,7 @@ input.search-field {
   color: rgba(0, 0, 0, 0.54);
   border-radius: 2px;
   border: 0;
-  height: 30px;
+  height: 22px;
   padding: 8px 8px 8px 30px;
   width: 160px;
   background: white;
@@ -379,10 +380,10 @@ nav ul a {
 ------------------------------------------------------------------------------*/
 
 
-@media(max-width:1600px) {
+@media(max-width:1700px) {
     .top-navbar {
         padding-left: 6%;
-        padding-right: 4%;
+        padding-right: 5%;
     }
 
     .navbar-header {
@@ -392,30 +393,18 @@ nav ul a {
 }
 
 
-@media(max-width:992px) {
+@media(max-width:1025px) {
+
     .top-navbar {
-        margin: 0px;
-        padding:0px;
+        padding-left: 0.5%;
+        padding-right: 0px;
     }
 
-    .top-navbar .navbar-brand {
-        width: 280px;
-        font-size:  2rem;
-        padding: 10px;
-    }
-
-    .top-navbar .navbar-brand strong {
-        font-size: 20px;
-    }
-
-    .navbar-brand i.large.material-icons {
-        font-size: 40px;
+    .nav > li > a {
+        padding-right: 0px;
     }
 
 
-    .dropdown-content {
-        margin-top: -10px;
-    }
 
     .nav-link {
         display: none !important;
@@ -424,22 +413,27 @@ nav ul a {
     .navbar-header {
     width: 80%;
     }
+
     nav a.sidenav-trigger {
         line-height: 1;
+        display: block;
+        height: 42px;
     }
 
     nav a.sidenav-trigger i {
-    height: 60px;
-    line-height: 1;
+
+        line-height: 1;
     }
 
     #trigger {
-        margin: 10px 0px 10px 0px;
+        margin: 2px 0px 10px 0px;
     }
 
     #search-form {
         display:none;
     }
+
+
 
 }
 
@@ -489,6 +483,12 @@ nav ul a {
   nav .nav-wrapper {
     margin-right: 0px;
   }
+
+      .top-navbar .navbar-right {
+        position: relative;
+        top: -45px;
+        left: 20px;
+    }
 }
 
 
@@ -496,22 +496,16 @@ nav ul a {
 
 
     .top-navbar .navbar-brand {
-        height: 60px;
+        height: 42px;
         width: 100%;
         font-size:  2rem;
         padding: 10px;
 
 
     }
-    .navbar-brand .fab {
-        font-size: 20px;
 
-    }
 
-    .top-navbar .navbar-right {
-        position: relative;
-        top: -60px;
-    }
+
 
 
 

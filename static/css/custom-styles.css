@@ -2,6 +2,17 @@
     COMMON  STYLES    
 ------------------------------------------------*/
 
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 400 500;
+    src: url('/static/fonts/TTF/SourceSansPro-Regular.ttf');
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: bold 600;
+    src: url('/static/fonts/TTF/SourceSansPro-Semibold.ttf');
+}
+
 body {
     font-family: 'Source Sans Pro', sans-serif;
     position: relative;
@@ -26,7 +37,7 @@ html {
     display: block;
     overflow: auto;
     position: relative;
-    top: 55px;
+    top: 42px;
 
 }
 
@@ -130,7 +141,7 @@ a:hover {
 .menu-card .card-header b {
     font-size: 0.9rem;
     color: black;
-    font-weight: 500
+    font-weight: 600
 }
 
 .menu-card .card-header p {
@@ -225,7 +236,7 @@ a:hover {
 ------------------------------------------------*/
 
 
-@media(max-width:1500px) {
+@media(max-width:1700px) {
 
     .header  {
         padding: 0 2% 0 2%;
@@ -252,13 +263,14 @@ a:hover {
 }
 
 
-@media(max-width:992px) {
+@media(max-width:1025px) {
     .tableau {
         display:none;
     }
 
     .summary {
         font-size: 12px;
+        padding: 1%;
     }
 
     .daft_info {
@@ -267,12 +279,26 @@ a:hover {
 
     .header {
        height: 120px;
-       padding-left: 2%;
+       padding-left: 0%;
 
     }
 
     .img-header {
-        display: none;
+        width: 150%;
+        margin-top: 40%;
+    }
+
+    .menu-card {
+        width: 100%;
+    }
+
+    .dots {
+        font-size: 12px;
+    }
+
+    .menu-card .card-content b{
+        font-size: 11px;
+
     }
 
 
@@ -292,6 +318,11 @@ a:hover {
         padding: 0%;
     }
 
+    .img-header {
+        width: 150%;
+        margin-top: 50%;
+    }
+
 
 
     .summary h5 {
@@ -302,6 +333,7 @@ a:hover {
     .summary p {
         font-size: 10px;
     }
+
 
 
 
