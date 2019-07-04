@@ -1,6 +1,6 @@
 # LinkedIn Analytics
 
-#### [Visit the App](http://www.cork-ai.com/)
+#### [Visit the App](https://linkedinanalytics.herokuapp.com/)
 
 <br>
 
