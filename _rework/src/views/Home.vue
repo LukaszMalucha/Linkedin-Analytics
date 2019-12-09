@@ -27,8 +27,10 @@
                     <div class="row row-image">
                         <img src="https://linkedin-analytics.s3.amazonaws.com/static/img/finance.jpg" class="img-responsive">
                     </div>
-                    <button onclick="window.location=''" type="submit" class="btn btn-enter"><span>Continue <i
+                    <router-link :to="{name: 'finance'}">
+                    <button class="btn btn-enter"><span>Continue <i
                             class="far fa-arrow-alt-circle-right"></i></span></button>
+                    </router-link>
                 </div>
                 <div class="card-bottom">
                 </div>
@@ -56,8 +58,10 @@
                     <div class="row row-image">
                         <img src="https://linkedin-analytics.s3.amazonaws.com/static/img/it.jpg" class="img-responsive">
                     </div>
-                    <button onclick="window.location=''" type="submit" class="btn btn-enter"><span>Continue <i
+                    <router-link :to="{name: 'it'}">
+                    <button class="btn btn-enter"><span>Continue <i
                             class="far fa-arrow-alt-circle-right"></i></span></button>
+                    </router-link>
                 </div>
                 <div class="card-bottom">
                 </div>
@@ -85,8 +89,10 @@
                     <div class="row row-image">
                         <img src="https://linkedin-analytics.s3.amazonaws.com/static/img/college.jpg" class="img-responsive">
                     </div>
-                    <button onclick="window.location=''" type="submit" class="btn btn-enter"><span>Continue <i
+                    <router-link :to="{name: 'education'}">
+                    <button class="btn btn-enter"><span>Continue <i
                             class="far fa-arrow-alt-circle-right"></i></span></button>
+                    </router-link>
                 </div>
                 <div class="card-bottom">
                 </div>
@@ -104,7 +110,7 @@ export default {
 
   },
   created() {
-    document.title = "RESTBank Asset Manager - Manage Your Financial Portfolio | Septellar";
+    document.title = "Linkedin Analytics - Irish companies insights | Septellar";
   }
 };
 
