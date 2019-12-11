@@ -1,42 +1,39 @@
 <template>
 <div class="row plain-element">
   <div class="row header">
-      <div class="row">
-          <div class="col-xs-2 col-sm-2 col-md-1 col-lg-2 text-right">
+          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left plain-element">
               <img src="@/assets/finance-medium.jpg" class="img responsive img-header">
           </div>
-
-          <div class="col-xs-10 col-sm-10 col-md-11 col-lg-10">
+          <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 plain-element">
               <div class="row summary">
                    <div class="box">
                       <h5>{{ companyCategory }} in Ireland </h5>
-                      <a href="" class="btn-algorithm">View Companies</a>
+                      <router-link class="btn-algorithm" :to="{ name: 'companies', params: { category: category } }">
+                        View Companies
+                      </router-link>
                   </div>
-
                   <h6>Sector Companies: <b class="counter">{{ companyCount }}</b></h6>
-
-
               </div>
           </div>
-      </div>
+
   </div>
   <div class="dashboard-cards">
       <div class="row row-cards">
-          <div class="col-md-3 no-padding">
-              <div class="row no-padding no-margin-bottom">
-                  <div class="card insights-card insights-card-narrow">
+          <div class="col-sm-3 col-md-3 col-lg-3 plain-element">
+              <div class="row plain-element no-margin-bottom">
+                  <div class="card insights-card insights-card-narrow-left" id="establishedCard">
                       <div class="card-header">
                           <img src="@/assets/finance-small.jpg" class="img-responsive">
                           <p><b>Linkedin Analytics</b> <br>{{ companyCategory }} </p>
 
                       </div>
                       <div class="row row-comment">
-                          {{ companyCategory }} with the tradition:
+                          {{ companyCategory }} with tradition:
                       </div>
 
                       <div class="row-image">
                           <div class="table-responsive">
-                              <table class="table table-established">
+                              <table class="table table-established" id="tableEstablished">
                                   <thead>
                                   <tr>
                                       <th>Company</th>
@@ -56,25 +53,25 @@
                       </div>
                   </div>
               </div>
-              <div class="row no-padding">
-                  <div class="card insights-card">
+              <div class="row plain-element">
+                  <div class="card insights-card insights-card-narrow-left" id="smallCard">
                       <div class="card-header">
                           <img src="@/assets/finance-small.jpg" class="img-responsive">
                           <p><b>Linkedin Analytics</b> <br>{{ companyCategory }} </p>
                       </div>
                       <div class="row row-comment">
-                          {{ companyCategory }} by followers count:
+                          {{ companyCategory }} followers:
                       </div>
                       <div class="chart-small">
-                          <followers-chart  :chart-data="followersCountData" :styles="myStyles"></followers-chart>
+                          <followers-chart  :chart-data="followersCountData" :styles="chartStyles"></followers-chart>
                       </div>
                   </div>
               </div>
           </div>
 
-          <div class="col-md-6 no-padding">
-              <div class="row no-padding">
-                  <div class="card insights-card">
+          <div class="col-sm-6 col-md-6 col-lg-6 plain-element">
+              <div class="row plain-element">
+                  <div class="card insights-card insights-card-middle">
                       <div class="card-header">
                           <img src="@/assets/finance-small.jpg" class="img-responsive">
                           <p><b>Linkedin Analytics</b> <br>{{ companyCategory }} </p>
@@ -84,12 +81,12 @@
                           {{ companyCategory }} by type:
                       </div>
                       <div class="chart">
-                          <types-chart  :chart-data="companyTypesData" :styles="myStyles"></types-chart>
+                          <types-chart  :chart-data="companyTypesData" :styles="chartStyles"></types-chart>
                       </div>
                   </div>
               </div>
-              <div class="row no-padding">
-                  <div class="card insights-card">
+              <div class="row plain-element">
+                  <div class="card insights-card insights-card-middle">
                       <div class="card-header">
                           <img src="@/assets/finance-small.jpg" class="img-responsive">
                           <p><b>Linkedin Analytics</b> <br>{{ companyCategory }} </p>
@@ -99,19 +96,19 @@
                           {{ companyCategory }} by employee count:
                       </div>
                       <div class="chart">
-                          <employees-chart  :chart-data="employeeCountData"></employees-chart>
+                          <employees-chart  :chart-data="employeeCountData" :styles="chartStyles"></employees-chart>
                       </div>
                   </div>
               </div>
           </div>
-          <div class="col-md-3 no-padding">
-              <div class="card insights-card">
+          <div class="col-sm-3 col-md-3 col-lg-3 plain-element">
+              <div class="card insights-card insights-card-narrow-right" id="tableSpecialities">
                   <div class="card-header">
                       <img src="@/assets/finance-small.jpg" class="img-responsive">
                       <p><b>Linkedin Analytics</b> <br>{{ companyCategory }}</p>
                   </div>
                   <div class="row row-comment">
-                      {{ companyCategory }} business specialties:
+                      {{ companyCategory }} by specialties:
                   </div>
                   <div class="row-image">
                       <div class="table-responsive">
@@ -145,7 +142,7 @@ import FollowersChart from "@/common/FollowersChart.js";
 import EmployeesChart from "@/common/EmployeesChart.js";
 import TypesChart from "@/common/TypesChart.js";
 
-let endpoint = "/api/finance/";
+
 export default {
   name: "Finance",
   components: {
@@ -155,6 +152,7 @@ export default {
   },
   data() {
     return {
+      category: "",
       companyCategory: "",
       companyCount: null,
       oldestTenCompanies: [],
@@ -169,10 +167,12 @@ export default {
   },
   methods: {
     getSectorData() {
+      let endpoint = "/api/finance/";
       apiService(endpoint)
         .then(data =>{
           this.companyCount = data.count;
           this.companyCategory = data.sector_strings[0];
+          this.category = data.sector_strings[1];
           this.oldestTenCompanies = data.oldest_10_dict;
           this.specialties = data.spec_dict;
           this.followersCount = data.followers_dict;
@@ -229,7 +229,7 @@ export default {
     }
   },
   computed: {
-    myStyles () {
+    chartStyles () {
       return {
         height: `100%`,
         position: "relative"

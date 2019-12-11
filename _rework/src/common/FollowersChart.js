@@ -13,6 +13,9 @@ export default {
           xAxes: [{
               gridLines: {
                   color: "rgba(0, 0, 0, 0)",
+              },
+              ticks: {
+                fontSize: 10
               }
           }],
           yAxes: [{

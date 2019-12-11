@@ -5,6 +5,7 @@ import NotFound from "./views/NotFound.vue";
 import Finance from "./views/Finance.vue";
 import IT from "./views/IT.vue";
 import Education from "./views/Education.vue";
+import Companies from "./views/Companies.vue";
 
 Vue.use(Router);
 
@@ -32,6 +33,12 @@ export default new Router({
       name: "education",
       component: Education
 
+    },
+    {
+      path: "/companies/:category",
+      name: "companies",
+      component: Companies,
+      props: true
     },
     {
       path: "*",
