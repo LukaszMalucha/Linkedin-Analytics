@@ -24,7 +24,7 @@
       <div class="row row-cards">
           <div class="col-md-3 no-padding">
               <div class="row no-padding no-margin-bottom">
-                  <div class="card insights-card">
+                  <div class="card insights-card insights-card-narrow">
                       <div class="card-header">
                           <img src="@/assets/finance-small.jpg" class="img-responsive">
                           <p><b>Linkedin Analytics</b> <br>{{ companyCategory }} </p>
@@ -66,7 +66,7 @@
                           {{ companyCategory }} by followers count:
                       </div>
                       <div class="chart-small">
-                          <followers-chart  :chart-data="datacollection" :styles="myStyles"></followers-chart>
+                          <followers-chart  :chart-data="followersCountData" :styles="myStyles"></followers-chart>
                       </div>
                   </div>
               </div>
@@ -84,7 +84,7 @@
                           {{ companyCategory }} by type:
                       </div>
                       <div class="chart">
-                          <canvas id="typeChart"></canvas>
+                          <types-chart  :chart-data="companyTypesData" :styles="myStyles"></types-chart>
                       </div>
                   </div>
               </div>
@@ -99,7 +99,7 @@
                           {{ companyCategory }} by employee count:
                       </div>
                       <div class="chart">
-                          <canvas id="ecountChart"></canvas>
+                          <employees-chart  :chart-data="employeeCountData"></employees-chart>
                       </div>
                   </div>
               </div>
@@ -142,12 +142,16 @@
 <script>
 import { apiService } from "@/common/api.service.js";
 import FollowersChart from "@/common/FollowersChart.js";
+import EmployeesChart from "@/common/EmployeesChart.js";
+import TypesChart from "@/common/TypesChart.js";
 
 let endpoint = "/api/finance/";
 export default {
-  name: 'Finance',
+  name: "Finance",
   components: {
-    FollowersChart
+    FollowersChart,
+    EmployeesChart,
+    TypesChart,
   },
   data() {
     return {
@@ -156,7 +160,11 @@ export default {
       oldestTenCompanies: [],
       specialties: {},
       followersCount: {},
-      datacollection: {},
+      followersCountData: {},
+      employeeCountData: {},
+      companyTypesData: {},
+      employeeCount: {},
+      companyTypes: {},
     }
   },
   methods: {
@@ -168,21 +176,52 @@ export default {
           this.oldestTenCompanies = data.oldest_10_dict;
           this.specialties = data.spec_dict;
           this.followersCount = data.followers_dict;
-          this.fillData();
-          window.console.log(data)
+          this.employeeCount = data.e_count_dict;
+          this.companyTypes = data.type_dict;
+          this.fillCompanyTypesChart();
+          this.fillFollowersCountChart();
+          this.fillEmployeeCountChart();
+          window.console.log(data);
+          window.console.log(this.companyTypes);
         })
     },
-    fillData() {
+    fillFollowersCountChart() {
       var dataset = this.followersCount
-
       var dataLabels = Object.keys(dataset)
-
       var dataValues = Object.values(dataset)
-      this.datacollection = {
+      this.followersCountData = {
         labels: dataLabels,
         datasets: [
           {
             backgroundColor: ["#4e79a7", "#f28e2b"],
+            data: dataValues
+          }
+        ]
+      }
+    },
+    fillEmployeeCountChart() {
+      var dataset = this.employeeCount
+      var dataLabels = Object.keys(dataset)
+      var dataValues = Object.values(dataset)
+      this.employeeCountData = {
+        labels: dataLabels,
+        datasets: [
+          {
+            backgroundColor: ["#2b5b89","#356899", "#5789b6", "#7bb0d5", "#89bddc", "#90c3df", "#98c8e2", "#9ccae3", "#9ccae3"],
+            data: dataValues
+          }
+        ]
+      }
+    },
+    fillCompanyTypesChart() {
+      var dataset = this.companyTypes
+      var dataLabels = Object.keys(dataset)
+      var dataValues = Object.values(dataset)
+      this.companyTypesData = {
+        labels: dataLabels,
+        datasets: [
+          {
+            backgroundColor: ["#4e79a7","#f28e2b", "#e15759", "#76b7b2", "#59a14f", "#edc948"],
             data: dataValues
           }
         ]
@@ -193,7 +232,7 @@ export default {
     myStyles () {
       return {
         height: `100%`,
-        position: 'relative'
+        position: "relative"
       }
     }
   },
