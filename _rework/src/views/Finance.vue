@@ -7,7 +7,7 @@
           <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 plain-element">
               <div class="row summary">
                    <div class="box">
-                      <h5>{{ companyCategory }} in Ireland </h5>
+                      <h5>{{ companyCategory }} Insights </h5>
                       <router-link class="btn-algorithm" :to="{ name: 'companies', params: { category: category } }">
                         View Companies
                       </router-link>

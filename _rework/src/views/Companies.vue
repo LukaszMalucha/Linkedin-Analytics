@@ -7,28 +7,36 @@
           <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 plain-element">
               <div class="row summary">
                    <div class="box">
-                      <h5>Financial Companies Listing </h5>
+                      <h5>{{ companiesType }} Listing </h5>
+                      <router-link class="btn-algorithm" :to="{ name: category }">
+                        Sector Insights
+                      </router-link>
                   </div>
-                  <h6>Sector Companies: <b class="counter">{{companiesCount}}</b></h6>
+                  <div class="box">
+                  <h6>Search Company:</h6>
+                  <div class="search-wrapper">
+                    <input type="text" v-model="search"/>
+                  </div>
+                  </div>
               </div>
           </div>
 
   </div>
   <div class="dashboard-cards">
       <div class="row row-cards">
-          <div v-for="(company, i) in results" class="col-md-3 plain-element" :key="i">
+          <div v-for="(company, i) in filteredList" class="col-xs-12 col-sm-4 col-md-4 col-lg-3 plain-element" :key="i">
             <div class="card company-card">
                 <div class="card-header">
                    <div class="row plain-element">
-                        <div class="col-md-4 plain-element">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 plain-element">
                             <div class="card-image">
                                 <img :src="company.squareLogoUrl"
                                      class="img responsive">
                             </div>
                             </div>
-                        <div class="col-md-8 plain-element">
+                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 plain-element">
                         <div class="card-title text-left">
-                            <h5>{{ company.name | truncate(40) }}</h5>
+                            <h5>{{ company.name | truncate(50) }}</h5>
                             <table class="table table-company">
                                 <tbody>
                                 <tr>
@@ -50,9 +58,10 @@
                 </div>
                 </div>
                 <div class="card-content">
-                    <p>Company established in {{ company.foundedYear }}. <b>{{ company.name }}</b> specializes in: {{ company.specialities   }}</p>
-                    <br>
-                    <td><a :href="company.websiteUrl">Company Website</a></td>
+                    <p>Company established in {{ company.foundedYear }}. <b>{{ company.name }}</b> specializes in: {{ company.specialities }}.
+                    <a :href="company.websiteUrl">Visit Website</a>
+                    </p>
+
 
                 </div>
 
@@ -73,21 +82,48 @@ export default {
   components: {
 
   },
+  props: {
+    category: {
+    type: String,
+    required: true
+    }
+  },
   data() {
     return{
-      results: {},
-      companiesCount: 0
+      search: '',
+      results: [],
+      companiesCount: 0,
+      companiesType: ''
     }
   },
   methods: {
     getCompaniesData() {
-    let endpoint = "/api/finance-list/";
+    let endpoint = `/api/${this.category}-list/`;
     apiService(endpoint)
       .then(data => {
           this.results = data.results,
           this.companiesCount = data.count
       })
+    },
+    getTitleString() {
+      if (this.category == 'finance') {
+          this.companiesType = 'Financial Companies'
       }
+      else if (this.category == 'it') {
+          this.companiesType = 'IT Companies'
+      }
+      else {
+         this.companiesType = 'Educational Institutions'
+      }
+    },
+  },
+  computed: {
+//  Search company function
+    filteredList() {
+      return this.results.filter(company => {
+        return company.name.toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
   },
   filters: {
       truncate (value, limit) {
@@ -99,6 +135,7 @@ export default {
   },
   created() {
     this.getCompaniesData();
+    this.getTitleString();
   }
 }
 

@@ -7,8 +7,10 @@
           <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 plain-element">
               <div class="row summary">
                    <div class="box">
-                      <h5>{{ companyCategory }} in Ireland </h5>
-                      <a href="" class="btn-algorithm">View Companies</a>
+                      <h5>{{ companyCategory }} Insights </h5>
+                      <router-link class="btn-algorithm" :to="{ name: 'companies', params: { category: category } }">
+                        View Companies
+                      </router-link>
                   </div>
                   <h6>Sector Companies: <b class="counter">{{ companyCount }}</b></h6>
               </div>
@@ -150,6 +152,7 @@ export default {
   },
   data() {
     return {
+      category: "",
       companyCategory: "",
       companyCount: null,
       oldestTenCompanies: [],
@@ -168,6 +171,7 @@ export default {
         .then(data =>{
           this.companyCount = data.count;
           this.companyCategory = data.sector_strings[0];
+          this.category = data.sector_strings[1];
           this.oldestTenCompanies = data.oldest_10_dict;
           this.specialties = data.spec_dict;
           this.followersCount = data.followers_dict;
