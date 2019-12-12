@@ -16,32 +16,32 @@
   </div>
   <div class="dashboard-cards">
       <div class="row row-cards">
-          <div class="col-md-4">
-            <div v-for="(company, i) in results" class="card company-card" :key="i">
+          <div v-for="(company, i) in results" class="col-md-3 plain-element" :key="i">
+            <div class="card company-card">
                 <div class="card-header">
                    <div class="row plain-element">
                         <div class="col-md-4 plain-element">
                             <div class="card-image">
-                                <img src="https://media.licdn.com/dms/image/C4D0BAQE0TbRCFIFQbw/company-logo_200_200/0?e=2132524800&v=beta&t=0ry7PEttBxSu7IOgU9vIT87xU3nTHlPmlm1e5kMpiHw"
+                                <img :src="company.squareLogoUrl"
                                      class="img responsive">
                             </div>
                             </div>
                         <div class="col-md-8 plain-element">
                         <div class="card-title text-left">
-                            <h5>123.ie</h5>
+                            <h5>{{ company.name | truncate(40) }}</h5>
                             <table class="table table-company">
                                 <tbody>
                                 <tr>
                                     <td>Co. Type:</td>
-                                    <td><b>Privately Held</b></td>
+                                    <td><b>{{company.companyType}}</b></td>
                                 </tr>
                                 <tr>
                                     <td>Industry:</td>
-                                    <td><b>Insurance</b></td>
+                                    <td><b>{{company.industries | truncate(20)}}</b></td>
                                 </tr>
                                 <tr>
                                     <td>Employees:</td>
-                                    <td><b>201-500</b></td>
+                                    <td><b>{{company.employeeCountRange}}</b></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -50,10 +50,10 @@
                 </div>
                 </div>
                 <div class="card-content">
-                    <p>Company established in 2002. 123.ie specializes in: Not Specified</p>
+                    <p>Company established in {{ company.foundedYear }}. <b>{{ company.name }}</b> specializes in: {{ company.specialities   }}</p>
                     <br>
-                    <td>Website:  </td>
-                    <td><b class="company_website">www.123.ie</b></td>
+                    <td><a :href="company.websiteUrl">Company Website</a></td>
+
                 </div>
 
             </div>
@@ -86,13 +86,19 @@ export default {
       .then(data => {
           this.results = data.results,
           this.companiesCount = data.count
-          window.console.log(data.results)
       })
+      }
+  },
+  filters: {
+      truncate (value, limit) {
+          if (value.length > limit) {
+              value = value.substring(0, (limit - 3)) + '...';
+          }
+          return value
       }
   },
   created() {
     this.getCompaniesData();
-    window.console.log(this.results)
   }
 }
 
