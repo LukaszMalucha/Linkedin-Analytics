@@ -225,14 +225,8 @@ a:hover {
 }
 
 
-.btn-floating {
-    background: #003f67;
-}
-
-
-.btn-floating:hover,
-.btn-floating:active {
-    background: #2d6d91;
+.img-card {
+  width: 100%;
 }
 
 
@@ -283,25 +277,33 @@ a:hover {
         padding: 0 1% 0 1%;
     }
 
+    .menu-card {
+      width: 80%;
+    }
+
 }
 
-@media(max-width:1200px) {
+
+
+@media(max-width:1361px) {
 
     .summary {
       padding: 15px 50px;
     }
+
+    .menu-card .card-header p {
+      width: 75%;
+    }
+
 }
 
 
 @media(max-width:1025px) {
 
     .menu-card {
-        width: 100%;
+        width: 70%;
     }
 
-    .dots {
-        font-size: 12px;
-    }
 
     .menu-card .card-content b{
         font-size: 11px;

@@ -10,8 +10,8 @@
 
 ## Project Description
 
-Django interface for LinkedIn API data extraction. Easily adjustable functionality, with REST API backend and Vue.js frontend. 
-Database hosts Irish companies (location: Ireland) from three sectors: financial, IT & education. 
+Django interface for LinkedIn API data extraction. Easily adjustable functionality, with REST API backend and Vue.js frontend 
+features like dynamic search. Database hosts Irish companies (location: Ireland) from three sectors: financial, IT & education. 
 Find out more with statistical data dashboard about a sector or search for more information regarding chosen company.
 
 
@@ -19,7 +19,7 @@ Find out more with statistical data dashboard about a sector or search for more 
 
 ### Main Dashboard
 ##### `/`
-Choose one of three diffrent sector insights or find company information via searchbox
+Choose one of three different sector insights or find company information via searchbox
 
 ###### Scrapers:
 
