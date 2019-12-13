@@ -30,37 +30,36 @@ Dataset was preprocessed with pandas.
 <br>
 <br>
 
-![1](https://user-images.githubusercontent.com/26208598/54323062-84431580-45ef-11e9-9598-17a44a6efc29.JPG)
+![1](https://user-images.githubusercontent.com/26208598/70807514-9a1b7c00-1db5-11ea-9b6d-7e8b1402e122.PNG)
 
 #### Sector Insights:
-##### `/companies/**`
+##### `/[finance, it, education]`
 Classical database analytics done with pandas, scikitlearn and Chart.js
 <br>
 <br>
 
-![2](https://user-images.githubusercontent.com/26208598/54323063-84431580-45ef-11e9-8302-60f5bdef0e66.JPG)
+![2](https://user-images.githubusercontent.com/26208598/70807515-9a1b7c00-1db5-11ea-9935-66a94c83b288.PNG)
 
 #### Sector Listing:
-##### `insights/list/**`
+##### `companies/[finance, it, education]`
 Full Company listing view
 <br>
 <br>
 
-![3](https://user-images.githubusercontent.com/26208598/54323064-84dbac00-45ef-11e9-89a2-3fa39aa7bb48.JPG)
+![3](https://user-images.githubusercontent.com/26208598/70807516-9a1b7c00-1db5-11ea-9dba-ac649bb16ce3.PNG)
 
-#### Search Results View:
-##### `/insights/company_search`
-Datasets comparison with pandas and chartJs
+#### Dynamic Search:
 <br>
 <br>
 
-![4](https://user-images.githubusercontent.com/26208598/54323065-84dbac00-45ef-11e9-8515-a9e330b8af41.JPG)
+![4](https://user-images.githubusercontent.com/26208598/70807517-9ab41280-1db5-11ea-9887-b7540d97b85b.PNG)
 
  
 ### Manage User
 #### `/user/my_account/`
 
-![5](https://user-images.githubusercontent.com/26208598/54323066-84dbac00-45ef-11e9-91a6-c3c0f4da85e0.JPG)
+![5](https://user-images.githubusercontent.com/26208598/70807521-9be53f80-1db5-11ea-8d39-2daebf1c7e3e.PNG)
+
 
 <br>
 <br>
@@ -74,15 +73,15 @@ Datasets comparison with pandas and chartJs
 ## Django REST Endpoints
 
 #### Navigation
-##### `/rest`
+##### `/api/`
 
-![6](https://user-images.githubusercontent.com/26208598/54323067-84dbac00-45ef-11e9-9baa-f4d0cb78c044.JPG)
+![6](https://user-images.githubusercontent.com/26208598/70807623-d5b64600-1db5-11ea-8430-dcc6a680bf80.PNG)
 
 <br>
 <br>
 
 #### User
-##### `api/user`
+##### `api/user/**`
 
  User handling via RESTFUL Api with Token Authorization.
 
@@ -111,13 +110,13 @@ Apply Property Value Estimator algorithm via RESTFul Api.
 
 
 ##### Web Development:
-Django | Django RESTful | Docker | Heroku | Bootstrap | Materialize | AWS S3
+Django | Django RESTful | Vue.js | Heroku | Bootstrap | Materialize | AWS S3
 
 ##### Database Development:
 Postgres | SQLite
 
 ##### Python & JS – data analysis & visualisation:
-pandas | numpy | scikit-learn | chart.js
+pandas | numpy | scikit-learn | vuechart.js
 
 ##### Testing
 Django.test

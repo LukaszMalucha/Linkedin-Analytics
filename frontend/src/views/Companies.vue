@@ -45,7 +45,7 @@
                                 </tr>
                                 <tr>
                                     <td>Industry:</td>
-                                    <td><b>{{company.industries | truncate(20)}}</b></td>
+                                    <td><b>{{company.industries | truncate(23)}}</b></td>
                                 </tr>
                                 <tr>
                                     <td>Employees:</td>
@@ -132,7 +132,7 @@ export default {
   filters: {
       truncate (value, limit) {
           if (value.length > limit) {
-              value = value.substring(0, (limit - 3)) + '...';
+              value = value.substring(0, limit);
           }
           return value
       }
