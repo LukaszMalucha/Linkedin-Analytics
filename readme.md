@@ -10,7 +10,7 @@
 
 ## Project Description
 
-Django interface for LinkedIn data extraction. Easily adjustable functionality, with REST API. 
+Django interface for LinkedIn API data extraction. Easily adjustable functionality, with REST API backend and Vue.js frontend. 
 Database hosts Irish companies (location: Ireland) from three sectors: financial, IT & education. 
 Find out more with statistical data dashboard about a sector or search for more information regarding chosen company.
 
@@ -109,12 +109,6 @@ Apply Property Value Estimator algorithm via RESTFul Api.
 
 ## TOOLS, MODULES & TECHNIQUES
 
-### Travis CI:
-
-[![Build Status](https://travis-ci.com/LukaszMalucha/Linkedin-Analytics.svg?branch=master)](https://travis-ci.com/LukaszMalucha/Linkedin-Analytics)
-
-### Test Files:
-#### `/core/tests/`
 
 ##### Web Development:
 Django | Django RESTful | Docker | Heroku | Bootstrap | Materialize | AWS S3

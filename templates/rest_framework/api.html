@@ -5,9 +5,6 @@
 
 {% block style %}
 {{ block.super }}
-<!-- Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <!-- Materialize-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- FontAwesome Styles-->
@@ -16,15 +13,12 @@
     <link href="{% static 'css/api.css' %}" rel="stylesheet" />
     <link href="{% static 'css/navbar.css' %}" rel="stylesheet" />
     <!-- Google Fonts-->
-
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-    <!-- jQuery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Chart Js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <!-- Material Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
 {% endblock %}
 
@@ -34,22 +28,21 @@
 {% block navbar %}
     <nav class="navbar navbar-default top-navbar" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand waves-effect waves-dark" href="{% url 'dashboard:dashboard' %}"><i
+            <a class="navbar-brand waves-effect waves-dark" href="/"><i
                     class="fab fa-linkedin-in"></i><strong>LinkedIn Analytics</strong></a>
         </div>
-         <ul class="nav navbar-nav pull-right">
-            <li><a class="nav-link" href="{% url 'dashboard:rest' %}"><i class="fas fa-terminal"></i><b>REST Api</b></a></li>
-            <li><a class="nav-link" target="_blank" href="https://github.com/LukaszMalucha/Linkedin-Analytics"><i class="fab fa-github"></i> <b>GitHub</b></a></li>
-            <li><a class="dropdown-button waves-effect waves-dark nav-link" id="user"><i class="fas fa-user"></i><b>
-              {% block userlinks %}
-              {% if user.is_authenticated %}
+         <ul class="nav navbar-top-links navbar-right">
+            <li><a class="nav-link"  href="/api/user/create/"><i class="fas fa-user-plus"></i> <b>Register</b></a></li>
+            <li><a class="nav-link"  href="/api/user/authenticate/"><i class="fas fa-user-check"></i> <b>Authenticate</b></a></li>
+            <li><a class="nav-link"  href="/api/user/my-account/"><i class="fas fa-user-circle"></i><b>My Account</b></a></li>
+           {% if user.is_authenticated %}
+           <li> <a class="nav-link" id="dropdownMenuButton" data-toggle="dropdown"><i class="fas fa-caret-down"></i><b>{{ user }}</b></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a href="{% url 'user:logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            </div>
+           </li>
 
-                  {% optional_logout request user %}
-              {% else %}
-                    {% optional_login request %}
-              {% endif %}
-            {% endblock %}
-            </b></a></li>
+            {% endif %}
         </ul>
     </nav>
 {% endblock %}

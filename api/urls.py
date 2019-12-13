@@ -7,11 +7,13 @@ app_name = 'api'
 
 router = DefaultRouter()
 router.register('companies', views.CompaniesViewSet, basename='companies')
-
+router.register('finance-list', views.FinanceViewSet, basename='finance')
+router.register('it-list', views.ITViewSet, basename='it')
+router.register('education-list', views.EducationViewSet, basename='education')
 
 urlpatterns = [
-    path('create/', views.CreateUserView.as_view(), name='create'),
-    path('authenticate/', views.CreateTokenView.as_view(), name='authenticate'),
-    path('my_account/', views.ManageUserView.as_view(), name='my_account'),
     path('', include(router.urls)),
+    path('finance/', views.FinanceInsightsViewSet.as_view()),
+    path('it/', views.ITInsightsViewSet.as_view()),
+    path('education/', views.EducationInsightsViewSet.as_view())
 ]

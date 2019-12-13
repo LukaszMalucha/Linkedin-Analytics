@@ -28,10 +28,6 @@ html {
 }
 
 
-.img-header {
-    margin-top: 15%;
-}
-
 #page-index {
     width: 100%;
     display: block;
@@ -52,18 +48,28 @@ html {
 }
 
 
+/*------------------------------------------------------------------------------
+    Row Header
+------------------------------------------------------------------------------*/
 
 .header {
-    height: 180px;
+    height: 150px;
     margin: 0px;
     background: white;
-    padding: 0 16% 0 12%;
+    padding: 0 15% 0 15%;
+}
 
+.img-header {
+    position:relative;
+    height: 120px;
+    margin-top: 15px;
 }
 
 .summary {
-    padding: 2% 0% 3% 0%;
+    height: 150px;
+    padding: 15px 30px;
     color: #333333 !important;
+    margin: 0px;
 
 }
 
@@ -71,11 +77,6 @@ html {
     color: #003f67;
     font-size: 1.4rem;
 }
-
-.row-message {
-    height: 20px;
-}
-
 
 .header-small {
     height: 120px;
@@ -97,13 +98,53 @@ a:hover {
     background: transparent;
 }
 
+.btn-algorithm {
+    border-radius: 10px;
+    margin-left: 40px;
+    height: 24px;
+    width: auto;
+    background: #4e79a7;
+    padding: 0px 10px 0px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-top: 6px;
+    color: white;
+}
+
+.btn-algorithm:hover,
+.btn-algorithm:focus,
+.btn-algorithm:active {
+    color: white;
+    background: #f28e2b;
+}
+
+/*----------------------------------------------
+    Row Message
+------------------------------------------------*/
+
+.row-message {
+  position: absolute;
+  width: 100%;
+}
+
+.alert {
+  position: absolute;
+  width: 100%;
+}
+
+.messages {
+    height: 20px;
+}
+
+
 
 /*----------------------------------------------
     MENU CARD
 ------------------------------------------------*/
 
 .menu-card {
-    box-shadow: 0 3px 3px 0 #A9A9A9, 0 3px 1px -2px #838383, 0 1px 5px 0 #838383;
+    box-shadow: 1px 1px 2px 2px #A9A9A9;
     text-align: left;
     width: 90%;
     margin: 0 auto;
@@ -239,54 +280,20 @@ a:hover {
 @media(max-width:1700px) {
 
     .header  {
-        padding: 0 2% 0 2%;
+        padding: 0 1% 0 1%;
     }
 
-    .tableau {
+}
 
-        margin-top: 25%;
-    }
+@media(max-width:1200px) {
 
     .summary {
-        padding: 3% 0% 3% 0%;
+      padding: 15px 50px;
     }
-
-    .summary p {
-        font-size: 13px;
-    }
-
-    .daft_info {
-        font-size: 11px;
-    }
-
-
 }
 
 
 @media(max-width:1025px) {
-    .tableau {
-        display:none;
-    }
-
-    .summary {
-        font-size: 12px;
-        padding: 1%;
-    }
-
-    .daft_info {
-        display: none;
-    }
-
-    .header {
-       height: 120px;
-       padding-left: 0%;
-
-    }
-
-    .img-header {
-        width: 150%;
-        margin-top: 40%;
-    }
 
     .menu-card {
         width: 100%;
@@ -301,43 +308,66 @@ a:hover {
 
     }
 
-
-
-
+    .btn-algorithm {
+        margin-left: 10px;
+        height: 24px;
+        font-size: 12px;
+        padding: 0px 6px 0px 6px;
+        line-height: 24px;
+        margin-top: 6px;
+        color: white;
+    }
 
 
 }
 
+@media(max-width:800px) {
 
+    .summary {
+      padding: 15px 70px;
+    }
+}
 
-
-@media(max-width:520px) {
-
+@media(max-width:600px) {
 
     .header {
-        padding: 0%;
+        height: 90px;
+
+    }
+
+    .header-small {
+      height: 40px;
     }
 
     .img-header {
-        width: 150%;
-        margin-top: 50%;
+        position:relative;
+        height: 60px;
+        margin-top: 15px;
     }
 
+    .summary {
+        height: 90px;
+        padding: 15px 0px 15px 40px;
 
-
-    .summary h5 {
-        font-size: 1rem;
     }
 
-
-    .summary p {
-        font-size: 10px;
+    .summary h5, h6 {
+        font-size: 0.9rem;
+        margin: 5px 0px;
     }
 
+    .counter {
+        font-size: 0.9rem;
+        margin: 5px 0px;
+    }
 
-
-
-
+    .btn-algorithm {
+      font-size: 10px;
+      height: 18px;
+      line-height: 18px;
+      margin-top: 0px;
+      margin-left: 5px;
+    }
 }
 
 

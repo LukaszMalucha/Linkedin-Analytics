@@ -9,8 +9,6 @@ $(".alert").delay(3000).fadeOut(200, function() {
 
 $(document).ready(function() {
 
-    $('.fixed-action-btn').floatingActionButton();
-
     $('.sidenav').sidenav();
 
     $('.counter').counterUp({

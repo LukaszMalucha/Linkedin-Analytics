@@ -1,0 +1,137 @@
+{% extends "base.html" %} {% load staticfiles %}{% load materializecss %}
+{% block extrahead %}
+<link href="{% static 'css/forms.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/data.css' %}" rel="stylesheet"/>
+{% endblock %}
+{% load bootstrap_tags %}
+{% block content %}
+<div id="wrapper">
+
+<!-- TOP NAVBAR -->
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand waves-effect waves-dark" href="/"> <img
+                    src="{% static 'img/restbank.png' %}" class="responsive logo-img"></a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li><a class='dropdown-trigger nav-link' href='#' data-target='dropdown-user' id="user_dropdown"><i
+                    class="fas fa-caret-down"></i><b>
+                {% if user.is_authenticated %}
+                {{ user }}
+                {% else %}
+                Login/Register
+                {% endif %}
+            </b></a></li>
+            <li><a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" id="trigger">menu</i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- DROPDOWN -->
+    <ul id="dropdown-user" class="dropdown-content">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'user:logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+        {% else %}
+        <li><a href="{% url 'user:login' %}"><i class="fa fa-user fa-fw"></i> Log In</a></li>
+        <li><a href="{% url 'user:register' %}"><i class="fas fa-tasks"></i> Register</a></li>
+        {% endif %}
+    </ul>
+    <!-- MOBILE -->
+    <ul class="sidenav" id="mobile-demo">
+        {% if user.is_authenticated %}
+        <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:logout' %}"><i
+                class="fas fa-sign-out-alt"></i><b> Log Out {{ user.name }}</b></a></li>
+        {% else %}
+        <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:login' %}"><i
+                class="fa fa-user"></i><b> Log In</b></a></li>
+        <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:register' %}"><i
+                class="fas fa-tasks"></i><b> Register</b></a></li>
+        {% endif %}
+    </ul>
+
+
+{% block row_header %}
+<div class="row header details-header">
+    <div class="col-md-2 text-right plain-element img-column">
+        <img src="{% static 'img/portraits/default.jpg' %}" class="img responsive img-header">
+    </div>
+
+    <div class="col-md-10 text-left">
+        <h4>Edit Profile</h4>
+    </div>
+</div>
+
+
+<div class="row row-message">
+    {% if messages %} {% for message in messages %} {% if message.tags == "success" %}
+    <div class="alert alert-success">
+        <div class="messages text-center">
+            {{ message }}
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-danger">
+        <div class="messages text-center">
+            {{ message }}
+        </div>
+    </div>
+    {% endif %} {% endfor %}
+    {% else %}
+
+    {% endif %}
+</div>
+{% endblock %}
+<div class="dashboard-cards">
+    <div class="row row-cards">
+        <div class="col-md-5 no-padding">
+            <div class="card insights-card">
+                <div class="card-header">
+                    <img src="{% static 'img/icons/gear.png' %}" class="img-responsive">
+                    <p><b> Edit Profile </b></p>
+                </div>
+                <form class="form-signin form-wide" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-box">
+                        <div class="row">
+                            <div class="input-field col s4">
+                                <div class="input-field col s12">
+                                    <h6>My Position:</h6>
+                                </div>
+                                <div class="input-field col s12">
+                                    <h6>My Portrait:</h6>
+                                </div>
+
+                            </div>
+                            <div class="input-field col s4 property_input">
+                                <select name="position" required="required">
+                                    <option value="Coder">Coder</option>
+                                    <option value="PM">Project Manager</option>
+                                </select>
+                            </div>
+                            <div class="input-field col s6 property_input">
+                                <input placeholder="image" type="file" class="form-control file_input" name="image">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-login"><span>Submit <i
+                                class="far fa-arrow-alt-circle-right"></i></span>
+                        </button>
+                    </fieldset>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large blue" href="/">
+        <i class="large material-icons">exit_to_app</i>
+    </a>
+</div>
+
+</div>
+<div class="footer">
+    <p><a target="_blank" href="https://www.freeprivacypolicy.com/privacy/view/4a6458c34e915bb7bdfa2d3bcc0bc53e/">Privacy
+        Policy</a> • © 2019 - 2020 www.septellar.com - All Rights Reserved • Powered by Septellar &trade;</p>
+</div>
+{% endblock %}

@@ -119,43 +119,6 @@ btn-default:focus,
     padding-left: 25px;
 }
 
-/*------------------------------------------------------------------------------
-    TOP NAVBAR
-------------------------------------------------------------------------------*/
-
-nav {
-    background-color: transparent;
-    box-shadow: none;
-}
-
-.pagination>.active>a,
-.pagination>.active>a:focus,
-.pagination>.active>a:hover {
-    background-color: #003f67;
-    border-color: #003f67;
-}
-
-.navbar-brand {
-    padding-left: 2px !important;
-}
-
-.navbar .nav li a{
-    color: white;
-    height: 42px !important;
-}
-
-
-.navbar-default .navbar-nav > li > a:hover {
-    color: white;
-    background-color: transparent;
-}
-
-
-.navbar-text {
-    margin: 0px;
-    height: 100%;
-}
-
 
 /*------------------------------------------------------------------------------
     BREADCRUMB
@@ -244,6 +207,31 @@ ul.breadcrumb {
     width: 88%;
 }
 
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background-color: #102332 !important;
+    border-color: #102332 !important;
+}
+
+.dropdown-menu {
+  min-width: 100%;
+  width: 100%;
+  background-color: #102332;
+  padding-top: 10px;
+  margin-top: -2px;
+  height: 42px;
+
+}
+
+.dropdown-menu a {
+  height: 10px !important;
+}
+
+
+.dropdown-menu a:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    text-decoration: none;
+}
 
 /*------------------------------------------------------------------------------
     EDIT & ADD FORMS +

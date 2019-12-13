@@ -1,10 +1,13 @@
-{% extends "base.html" %} {% load i18n %}{% load staticfiles %}{% load materializecss %}
+{% extends "base.html" %} {% load staticfiles %}{% load materializecss %}
 {% block extrahead %}
 <link href="{% static 'css/forms.css' %}" rel="stylesheet"/>
 {% endblock %}
-{% load bootstrap_tags %} {% block content %}
+{% load bootstrap_tags %}
+
+{% block content %}
+
 {% block row_header %}
-<div class="row" style="min-height: 72px">
+<div class="row row-message">
     {% if messages %} {% for message in messages %}
     {% if message.tags == "success" %}
     <div class="alert alert-success">
@@ -26,30 +29,30 @@
 </div>
 {% endblock %}
 
-<div class="container">
+<div class="form-container">
 
     <form class="form-signin" method="post" action="{% url 'user:register' %}" class="accountform">
         <i class="material-icons" id="icon-login">assignment_turned_in</i>
         <fieldset class="form-box">
             <div class="row text-center">
-                <h4>{% trans "Register User" %}</h4>
+                <h4>Register User</h4>
             </div>
             <div class="row text-center">
-                <p>{% trans "Already got an account" %}? <a href="{% url 'user:login' %}">{% trans "Log In" %}</a></p>
+                <p>Already got an account? <a href="{% url 'user:login' %}">Log In</a></p>
             </div>
             <div class="row text-center">
                 <div class="input-field col s6">
                     <div class="input-field col s12 field-description">
-                        <h6>{% trans "Your Email Address" %}:</h6>
+                        <h6>Your Email Address:</h6>
                     </div>
                     <div class="input-field col s12 field-description">
-                        <h6>{% trans "Your Username" %}:</h6>
+                        <h6>Your Username:</h6>
                     </div>
                     <div class="input-field col s12 field-description">
-                        <h6>{% trans "Your Password" %}:</h6>
+                        <h6>Your Password:</h6>
                     </div>
                     <div class="input-field col s12 field-description">
-                        <h6>{% trans "Confirm Password" %}:</h6>
+                        <h6>Confirm Password:</h6>
                     </div>
                 </div>
                 <div class="input-field col s6">
@@ -62,5 +65,9 @@
         </fieldset>
     </form>
 </div> <!-- /container -->
-
+</div>
+<div class="footer">
+    <p><a target="_blank" href="https://www.freeprivacypolicy.com/privacy/view/4a6458c34e915bb7bdfa2d3bcc0bc53e/">Privacy
+        Policy</a> • © 2019 - 2020 www.septellar.com - All Rights Reserved • Powered by Septellar &trade;</p>
+</div>
 {% endblock %}

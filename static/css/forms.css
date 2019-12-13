@@ -6,11 +6,13 @@ body {
 
 
 #page-index {
-
-    padding-top: 60px;
     background-image: none;
+}
 
-
+.form-container {
+    padding-top: 148px;
+    width: 70%;
+    margin: auto;
 }
 
 .form-signin {
