@@ -33,7 +33,7 @@
 
                       <div class="row-image">
                           <div class="table-responsive">
-                              <table class="table table-established" id="tableEstablished">
+                              <table class="table table-content" id="tableEstablished">
                                   <thead>
                                   <tr>
                                       <th>Company</th>
@@ -112,7 +112,7 @@
                   </div>
                   <div class="row-image">
                       <div class="table-responsive">
-                          <table class="table table-established table-long">
+                          <table class="table table-content table-long">
                               <thead>
                               <tr>
                                   <th>Speciality</th>
@@ -180,8 +180,6 @@ export default {
           this.fillCompanyTypesChart();
           this.fillFollowersCountChart();
           this.fillEmployeeCountChart();
-          window.console.log(data);
-          window.console.log(this.companyTypes);
         })
     },
     fillFollowersCountChart() {

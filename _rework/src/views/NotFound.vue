@@ -1,11 +1,19 @@
 <template>
-<div id="page-index">
-  <div class="row row-banner row-banner-small">
-    <div class="col-md-8 text-left col-banner-small no-padding">
-      <h4>{{ message }}</h4>
-    </div>
-    <div class="col-md-4 no-padding">
-    </div>
+<div class="row plain-element">
+  <div class="row header">
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left plain-element">
+          <img src="@/assets/404.jpg" class="img responsive img-header">
+      </div>
+      <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 plain-element">
+          <div class="row summary">
+               <div class="box">
+                  <h5> 404 - Page Not Found </h5>
+                  <router-link class="btn-algorithm" :to="{ name: 'home' }">
+                    Back to Dashboard
+                  </router-link>
+              </div>
+          </div>
+      </div>
   </div>
 </div>
 </template>

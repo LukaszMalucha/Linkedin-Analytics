@@ -28,7 +28,7 @@
             <div class="card company-card">
                 <div class="card-header">
                    <div class="row plain-element">
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 plain-element">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3  plain-element">
                             <div class="card-image">
                                 <img :src="company.squareLogoUrl"
                                      class="img responsive">
@@ -59,7 +59,7 @@
                 </div>
                 <div class="card-content">
                     <p>Company established in {{ company.foundedYear }}. <b>{{ company.name }}</b> specializes in: {{ company.specialities }}.
-                    <a :href="company.websiteUrl">Visit Website</a>
+                    <a target="_blank" :href="company.websiteUrl">Visit Website</a>
                     </p>
 
 
@@ -121,7 +121,11 @@ export default {
 //  Search company function
     filteredList() {
       return this.results.filter(company => {
-        return company.name.toLowerCase().includes(this.search.toLowerCase())
+        return company.name.toLowerCase().includes(this.search.toLowerCase()) ||
+               company.industries.toLowerCase().includes(this.search.toLowerCase()) ||
+               company.companyType.toLowerCase().includes(this.search.toLowerCase()) ||
+               company.specialities.toLowerCase().includes(this.search.toLowerCase()) ||
+               company.foundedYear.toLowerCase().includes(this.search.toLowerCase())
       })
     }
   },
