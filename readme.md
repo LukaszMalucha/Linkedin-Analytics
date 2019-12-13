@@ -4,7 +4,7 @@
 
 <br>
 
-![1](https://user-images.githubusercontent.com/26208598/54323062-84431580-45ef-11e9-9598-17a44a6efc29.JPG)
+![2](https://user-images.githubusercontent.com/26208598/70807515-9a1b7c00-1db5-11ea-9935-66a94c83b288.PNG)
 
 <br>
 
