@@ -140,6 +140,7 @@ export default {
   created() {
     this.getCompaniesData();
     this.getTitleString();
+    document.title = "Linkedin Analytics - " + this.companyType;
   }
 }
 
