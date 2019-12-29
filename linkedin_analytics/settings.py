@@ -11,12 +11,11 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-# import env
+import env
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -25,10 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
 
 # Application definition
 
@@ -43,6 +41,7 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'daterange_filter',
     'materializecssform',
+    'social_django',
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -85,13 +84,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'linkedin_analytics.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -106,7 +105,6 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -126,7 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -140,31 +137,35 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
+# Static
+# files(CSS, JavaScript, Images)
+# https: // docs.djangoproject.com / en / 2.1 / howto / static - files /
 
 AWS_S3_OBJECT_PARAMETERS = {
     'Expires': 'Fri, 31 Dec 2055 20:00:00 GMT',
     'CacheControl': 'max-age=94608000',
-
 }
 
 AWS_STORAGE_BUCKET_NAME = 'linkedin-analytics'
 AWS_S3_REGION_NAME = 'eu-west-1'
-AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")                         ## hidden
-AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")                 ## hidden
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")  ## hidden
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")  ## hidden
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-STATICFILES_LOCATION = 'static'                                                 ## comment out for testing
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'                           ## comment out for testing
+STATICFILES_LOCATION = 'static'  ## comment out for testing
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'  ## comment out for testing
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 LOGIN_URL = "user/login/"
 LOGIN_REDIRECT_URL = "/"
@@ -177,7 +178,6 @@ SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = (True)
 
-
 # Django-REST-Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -188,7 +188,7 @@ REST_FRAMEWORK = {
 
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 1000                                                                                                    # SET LATER
+    'PAGE_SIZE': 1000
 }
 
 WEBPACK_LOADER = {
@@ -200,11 +200,3 @@ WEBPACK_LOADER = {
 
 # Get User model
 AUTH_USER_MODEL = 'core.User'
-
-
-
-
-
-
-
-

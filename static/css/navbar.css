@@ -354,49 +354,6 @@ nav ul a {
   }
 
 
-  nav form {
-/*     left: calc(90vw - 100%); */
-  }
-
-  ::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: transparent;
-  }
-
-  input.search-field {
-    width: 1px;
-    margin-right: 0px;
-    padding: 8px 25px;
-  }
-
-  input.search-field ~ .search-popup {
-    width: 1px;
-    margin-right: 0px;
-    padding: 8px 25px;
-  }
-
-  .search-icon {
-    top: 0;
-    padding-left: 15px;
-    color: rgba(0, 0, 0, 0.54);
-  }
-
-  input.search-field:focus {
-    margin-right: 0px;
-    width: 100vw;
-    padding: 8px 8px 8px 50px;
-  }
-
-  input.search-field:focus ~ .search-popup {
-    width: 100vw;
-  }
-
-  .search-content {
-    width: 100%;
-    padding: 8px 8px;
-  }
-
-
 }
 
 

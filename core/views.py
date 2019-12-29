@@ -1,4 +1,5 @@
 from django.views.generic.base import TemplateView
+from django.shortcuts import render
 
 class IndexTemplateView(TemplateView):
     def get_template_names(self):

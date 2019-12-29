@@ -3,9 +3,9 @@ from django.contrib import messages, auth
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from .forms import UserLoginForm, UserRegistrationForm
+from .forms import UserLoginForm, UserRegistrationForm, MyDetailsForm
 from core import models
-
+from user.utils import my_profile
 
 
 def login(request):
@@ -46,6 +46,10 @@ def register(request):
 
             if user:
                 auth.login(request, user)
+                user_profile = models.MyProfile.objects.filter(owner=user).first()
+                if not user_profile:
+                    user_profile = models.MyProfile(owner=user, position="guest", username=user.name)
+                    user_profile.save()
                 messages.success(request, "You have successfully registered")
                 return redirect('/')
 
@@ -67,7 +71,7 @@ def logout(request):
 
 @login_required
 def profile(request):
-    context = compile_profile(request.user)
+    context = my_profile(request.user)
 
     return render(request, 'profile.html', context)
 
@@ -75,22 +79,11 @@ def profile(request):
 @login_required
 def edit_profile(request):
     my_profile = get_object_or_404(models.MyProfile, owner=request.user)
-    positions = models.Position.objects.all()
-
+    my_details_form = MyDetailsForm(request.POST, request.FILES, instance=my_profile)
     if request.method == 'POST':
-        form = MyDetailsForm(request.POST, request.FILES, instance=my_profile)
-
-        # Amount of credits depends on user's position
-        if form.is_valid():
-            if my_profile.position == "PM" and my_profile.my_wallet == 0:
-                my_profile.my_wallet = 500
-            elif my_profile.position == "Coder" and my_profile.my_wallet == 0:
-                my_profile.my_wallet = 100
-            else:
-                my_profile.my_wallet = my_profile.my_wallet
+        if my_details_form.is_valid():
             my_profile.save()
 
             return redirect(reverse('user:profile'))
 
-    return render(request, 'edit_profile.html', {'my_profile': my_profile, 'positions': positions})
-
+    return render(request, 'edit_profile.html', {'my_profile': my_profile, 'my_details_form': my_details_form})

@@ -33,4 +33,5 @@ class CompanyModelAdmin(admin.ModelAdmin):
     )
 
 admin.site.register(models.User, UserAdmin)
+admin.site.register(models.MyProfile)
 admin.site.register(models.Company, CompanyModelAdmin)

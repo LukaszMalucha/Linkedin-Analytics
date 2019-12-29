@@ -73,6 +73,7 @@
     <!-- DROPDOWN -->
     <ul id="dropdown-user" class="dropdown-content">
         {% if user.is_authenticated %}
+        <li><a href="{% url 'user:profile' %}"><i class="fas fa-sign-out-alt"></i> My Profile</a></li>
         <li><a href="{% url 'user:logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
         {% else %}
         <li><a href="{% url 'user:login' %}"><i class="fa fa-user fa-fw"></i> Log In</a></li>
@@ -90,6 +91,7 @@
                href="https://www.lukaszmalucha.com"><i class="fab fa-github"></i> <b>GitHub</b></a>
         </li>
         {% if user.is_authenticated %}
+        <li><a href="{% url 'user:profile' %}"><i class="fas fa-sign-out-alt"></i> My Profile</a></li>
         <li><a class="dropdown-button waves-effect waves-dark" href="{% url 'user:logout' %}"><i
                 class="fas fa-sign-out-alt"></i><b>Log Out {{ user.name }}</b></a></li>
         {% else %}

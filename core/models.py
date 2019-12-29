@@ -1,10 +1,6 @@
-from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.core.validators import MinValueValidator, MaxValueValidator
-from django.conf import settings
-from django.shortcuts import get_object_or_404
-from rest_framework.exceptions import ValidationError
-
+from django.db import models
+import os
 
 # Manager Class
 class UserManager(BaseUserManager):
@@ -12,7 +8,7 @@ class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         """Create and save new user"""
         if not email:
-            raise ValueError(_('User must have a valid email address'))
+            raise ValueError(('User must have a valid email address'))
         user = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -39,9 +35,36 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
 
+    def save(self, *args, **kwargs):
+        super(User, self).save(*args, **kwargs)
+        user_profile = MyProfile.objects.filter(owner=self).first()
+        if not user_profile:
+            user_profile = MyProfile(owner=self, position="guest", username=self.name)
+            user_profile.save()
+
+
+def content_file_name(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s-%s.%s" % (instance.owner.id, "portrait", ext)
+    return os.path.join('portraits', filename)
+
+
+class MyProfile(models.Model):
+    """User Profile Details"""
+    username = models.CharField(max_length=254, default='Anonymous', blank=True)
+    position = models.CharField(max_length=254, default='guest', blank=True)
+    image = models.ImageField(upload_to=content_file_name, default='portraits/default.jpg')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "User Profile"
+        verbose_name_plural = "User Profiles"
+
+    def __str__(self):
+        return str(self.owner) + " profile"
+
 
 class Company(models.Model):
-
     class Meta:
         verbose_name_plural = "Companies"
 
