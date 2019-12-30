@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'daterange_filter',
     'materializecssform',
-    'social_django',
 
     'rest_framework',
     'rest_framework.authtoken',
