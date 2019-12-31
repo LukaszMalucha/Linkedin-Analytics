@@ -38,15 +38,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def save(self, *args, **kwargs):
         super(User, self).save(*args, **kwargs)
-        user_profile = MyProfile.objects.filter(owner=self).first()
-        if not user_profile:
-            user_profile = MyProfile(owner=self, position="guest", username=self.name)
-            user_profile.save()
+        profile, created = MyProfile.objects.get_or_create(owner=self)
+
 
 
 class MyProfile(models.Model):
     """User Profile Details"""
-    username = models.CharField(max_length=254, default='Anonymous', blank=True)
     position = models.CharField(max_length=254, default='guest', blank=True)
     image = models.ImageField(upload_to=content_file_name, default='portraits/default.jpg')
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
