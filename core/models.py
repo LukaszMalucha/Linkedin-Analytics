@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
-import os
+from core.utils import content_file_name
+
 
 # Manager Class
 class UserManager(BaseUserManager):
@@ -41,12 +42,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         if not user_profile:
             user_profile = MyProfile(owner=self, position="guest", username=self.name)
             user_profile.save()
-
-
-def content_file_name(instance, filename):
-    ext = filename.split('.')[-1]
-    filename = "%s-%s.%s" % (instance.owner.id, "portrait", ext)
-    return os.path.join('portraits', filename)
 
 
 class MyProfile(models.Model):
