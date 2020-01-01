@@ -1,14 +1,15 @@
-from django.test import TestCase
-from django.contrib.auth import get_user_model
-from django.urls import reverse
-
-from rest_framework.test import APIClient
-from rest_framework import status
-
-CREATE_USER_URL = reverse("api-user:create")
-TOKEN_URL = reverse("api-user:authenticate")
-MY_PROFILE_URL = reverse("api-user:my-account")
-
+# from django.test import TestCase
+# from django.contrib.auth import get_user_model
+# from django.urls import reverse
+#
+# from rest_framework.test import APIClient
+# from rest_framework import status
+# from user.api.views import ManageUserView
+#
+# CREATE_USER_URL = reverse("api-user:create")
+# TOKEN_URL = reverse("api-user:authenticate")
+# MY_PROFILE_URL = reverse("api-user:my-account")
+#
 #
 # def create_user(**params):
 #     return get_user_model().objects.create_user(**params)
@@ -132,6 +133,15 @@ MY_PROFILE_URL = reverse("api-user:my-account")
 #             "email": self.user.email
 #         })
 #
+#     def test_get_object(self):
+#         """Test retrieve and return authenticated user"""
+#         view = ManageUserView()
+#         request = self.client.get(MY_PROFILE_URL)
+#         request.user = self.user
+#         view.request = request
+#
+#         self.assertEqual(view.get_object(), self.user)
+#
 #     def test_post_my_profile_not_allowed(self):
 #         """Test that POST is not allowed on the my profile url"""
 #         res = self.client.post(MY_PROFILE_URL, {})
@@ -153,4 +163,4 @@ MY_PROFILE_URL = reverse("api-user:my-account")
 #         self.assertTrue(self.user.check_password(payload['password']))
 #         self.assertEqual(res.status_code, status.HTTP_200_OK)
 #
-
+#

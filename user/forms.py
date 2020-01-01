@@ -29,9 +29,6 @@ class UserRegistrationForm(UserCreationForm):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
 
-        if not password1 or not password2:
-            raise ValidationError("Password must not be empty")
-
         if password1 != password2:
             raise ValidationError("Passwords do not match")
 
