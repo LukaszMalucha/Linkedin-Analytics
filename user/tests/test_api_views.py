@@ -29,9 +29,9 @@
 #             "name": "Test name"
 #         }
 #
-#         res = self.client.post(CREATE_USER_URL, payload)
+#         response = self.client.post(CREATE_USER_URL, payload)
 #
-#         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+#         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 #         user = get_user_model().objects.get(**res.data)
 #         self.assertTrue(user.check_password(payload["password"]))
 #         self.assertNotIn("password", res.data)
@@ -45,9 +45,9 @@
 #         }
 #         create_user(**payload)
 #
-#         res = self.client.post(CREATE_USER_URL, payload)
+#         response = self.client.post(CREATE_USER_URL, payload)
 #
-#         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+#         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 #
 #     def test_password_too_short(self):
 #         """Test if password is at least 8 characters"""
@@ -56,9 +56,9 @@
 #             "password": "test",
 #             "name": "Test name"
 #         }
-#         res = self.client.post(CREATE_USER_URL, payload)
+#         response = self.client.post(CREATE_USER_URL, payload)
 #
-#         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+#         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 #         user_exists = get_user_model().objects.filter(
 #             email=payload["email"]
 #         ).exists()
@@ -72,18 +72,18 @@
 #             "name": "Test name"
 #         }
 #         create_user(**payload)
-#         res = self.client.post(TOKEN_URL, payload)
+#         response = self.client.post(TOKEN_URL, payload)
 #         self.assertIn("token", res.data)
-#         self.assertEqual(res.status_code, status.HTTP_200_OK)
+#         self.assertEqual(response.status_code, status.HTTP_200_OK)
 #
 #     def test_create_token_invalid_credentials(self):
 #         """Test that token is not created if invalid credentials are given"""
 #         create_user(email="test@gmail.com", password="test1234")
 #         payload = {"email": "test@gmail.com", "password": "wrongpassword"}
-#         res = self.client.post(TOKEN_URL, payload)
+#         response = self.client.post(TOKEN_URL, payload)
 #
 #         self.assertNotIn("token", res.data)
-#         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+#         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 #
 #     def test_create_token_no_user(self):
 #         """Test that token is not created if user doesn't exist"""
@@ -92,23 +92,23 @@
 #             "password": "test1234",
 #             "name": "Test name"
 #         }
-#         res = self.client.post(TOKEN_URL, payload)
+#         response = self.client.post(TOKEN_URL, payload)
 #
 #         self.assertNotIn("token", res.data)
-#         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+#         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 #
 #     def test_create_token_missing_field(self):
 #         """Test that email and password are required"""
-#         res = self.client.post(TOKEN_URL, {"email": "one", "password": ""})
+#         response = self.client.post(TOKEN_URL, {"email": "one", "password": ""})
 #
 #         self.assertNotIn("token", res.data)
-#         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+#         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 #
 #     def test_retrieve_user_unauthorized(self):
 #         """Test that authentication is required for users"""
-#         res = self.client.get(MY_PROFILE_URL)
+#         response = self.client.get(MY_PROFILE_URL)
 #
-#         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
+#         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 #
 #
 # class PrivateUserApiTests(TestCase):
@@ -125,10 +125,10 @@
 #
 #     def test_retrieve_profile_success(self):
 #         """Test retrieving profile for logged in user"""
-#         res = self.client.get(MY_PROFILE_URL)
+#         response = self.client.get(MY_PROFILE_URL)
 #
-#         self.assertEqual(res.status_code, status.HTTP_200_OK)
-#         self.assertEqual(res.data, {
+#         self.assertEqual(response.status_code, status.HTTP_200_OK)
+#         self.assertEqual(response.data, {
 #             "name": self.user.name,
 #             "email": self.user.email
 #         })
@@ -144,9 +144,9 @@
 #
 #     def test_post_my_profile_not_allowed(self):
 #         """Test that POST is not allowed on the my profile url"""
-#         res = self.client.post(MY_PROFILE_URL, {})
+#         response = self.client.post(MY_PROFILE_URL, {})
 #
-#         self.assertEqual(res.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+#         self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 #
 #     def test_update_user_profile(self):
 #         """Test updating the user profile for authenticated user"""
@@ -156,11 +156,11 @@
 #             "name": "Test name 1"
 #         }
 #
-#         res = self.client.patch(MY_PROFILE_URL, payload)
+#         response = self.client.patch(MY_PROFILE_URL, payload)
 #
 #         self.user.refresh_from_db()
 #         self.assertEqual(self.user.name, payload['name'])
 #         self.assertTrue(self.user.check_password(payload['password']))
-#         self.assertEqual(res.status_code, status.HTTP_200_OK)
+#         self.assertEqual(response.status_code, status.HTTP_200_OK)
 #
 #

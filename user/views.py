@@ -19,12 +19,7 @@ def login(request):
             if user:
                 auth.login(request, user)
                 messages.success(request, "You have successfully logged in")
-
-                if request.GET and request.GET['next'] != '':
-                    next = request.GET['next']
-                    return HttpResponseRedirect(next)
-                else:
-                    return redirect('/')
+                return redirect('/')
             else:
                 messages.error(request, "Your email or password are incorrect")
     else:
@@ -40,16 +35,13 @@ def register(request):
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
             user_form.save()
-
             user = auth.authenticate(email=request.POST.get('email'),
                                      password=request.POST.get('password1'))
 
             if user:
                 auth.login(request, user)
-                user_profile = models.MyProfile.objects.filter(owner=user).first()
-                if not user_profile:
-                    user_profile = models.MyProfile(owner=user, position="guest", username=user.name)
-                    user_profile.save()
+                models.MyProfile.objects.get_or_create(owner=user)
+
                 messages.success(request, "You have successfully registered")
                 return redirect('/')
 
@@ -71,7 +63,8 @@ def logout(request):
 
 @login_required
 def profile(request):
-    context = my_profile(request.user)
+    context = my_profile(
+        request.user)  ########################################################################################################
 
     return render(request, 'profile.html', context)
 

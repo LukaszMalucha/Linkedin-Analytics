@@ -38,8 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def save(self, *args, **kwargs):
         super(User, self).save(*args, **kwargs)
-        profile, created = MyProfile.objects.get_or_create(owner=self)
-
+        MyProfile.objects.get_or_create(owner=self)
 
 
 class MyProfile(models.Model):
