@@ -18,7 +18,7 @@ education_sector = os.path.join(settings.BASE_DIR, "db_manager/datasets/educatio
 
 
 class CompaniesViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.AllowAny, IsAdminOrReadOnly)
+    permission_classes = (IsAdminOrReadOnly,)
     serializer_class = serializers.CompanySerializer
     filter_backends = (filters.SearchFilter, filters.OrderingFilter)
     search_fields = ("name", "companyType", "industries", "specialities", "group")
@@ -27,7 +27,7 @@ class CompaniesViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = self.queryset
-        return queryset.order_by('-name')
+        return queryset.order_by('name')
 
     def perform_create(self, serializer):
         if serializer.is_valid():
@@ -36,7 +36,7 @@ class CompaniesViewSet(viewsets.ModelViewSet):
 
 
 class FinanceViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.AllowAny, IsAdminOrReadOnly)
+    permission_classes = (IsAdminOrReadOnly,)
     serializer_class = serializers.CompanySerializer
     filter_backends = (filters.SearchFilter, filters.OrderingFilter)
     search_fields = ("name", "companyType", "industries", "specialties", "group")
@@ -54,7 +54,7 @@ class FinanceViewSet(viewsets.ModelViewSet):
 
 
 class ITViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.AllowAny, IsAdminOrReadOnly)
+    permission_classes = (IsAdminOrReadOnly,)
     serializer_class = serializers.CompanySerializer
     filter_backends = (filters.SearchFilter, filters.OrderingFilter)
     search_fields = ("name", "companyType", "industries", "specialties", "group")
@@ -72,7 +72,7 @@ class ITViewSet(viewsets.ModelViewSet):
 
 
 class EducationViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.AllowAny, IsAdminOrReadOnly)
+    permission_classes = (IsAdminOrReadOnly,)
     serializer_class = serializers.CompanySerializer
     filter_backends = (filters.SearchFilter, filters.OrderingFilter)
     search_fields = ("name", "companyType", "industries", "specialties", "group")

@@ -10,6 +10,8 @@ class UserManager(BaseUserManager):
         """Create and save new user"""
         if not email:
             raise ValueError('User must have a valid email address')
+        if len(str(password)) < 8:
+            raise ValueError('This password is too short. It must contain at least 8 characters.')
         user = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -17,6 +19,7 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, email, password):
         user = self.create_user(email, password)
+        user.name = "Admin"
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -31,6 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+
 
     objects = UserManager()
 
@@ -47,6 +51,8 @@ class MyProfile(models.Model):
     image = models.ImageField(upload_to=content_file_name, default='portraits/default.jpg')
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    objects = models.Manager()
+
     class Meta:
         verbose_name = "User Profile"
         verbose_name_plural = "User Profiles"
@@ -56,9 +62,7 @@ class MyProfile(models.Model):
 
 
 class Company(models.Model):
-    class Meta:
-        verbose_name_plural = "Companies"
-
+    """Company model for db storage"""
     name = models.CharField(max_length=200, default="Undisclosed", null=True)
     companyType = models.CharField(max_length=200, default="Undisclosed", null=True)
     employeeCountRange = models.CharField(max_length=200, default="Undisclosed", null=True)
@@ -69,6 +73,11 @@ class Company(models.Model):
     squareLogoUrl = models.CharField(max_length=500, default="Undisclosed", null=True)
     websiteUrl = models.CharField(max_length=500, default="Undisclosed", null=True)
     group = models.CharField(max_length=200, default="Undisclosed", null=True)
+
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name_plural = "Companies"
 
     def __str__(self):
         return self.name

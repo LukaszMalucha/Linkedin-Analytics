@@ -6,11 +6,12 @@ class IndexTemplateView(TemplateView):
         template_name = "index.html"
         return template_name
 
-def error_404(request):
-    return render(request, '404.html')
-
-
-def error_500(request):
-    return render(request, '500.html')
-
-
+# Replaced by Vue.js
+# def error_404(request):
+#     return render(request, '404.html')
+#
+#
+# def error_500(request):
+#     return render(request, '500.html')
+#
+#

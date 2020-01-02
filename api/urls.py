@@ -13,7 +13,7 @@ router.register('education-list', views.EducationViewSet, basename='education')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('finance/', views.FinanceInsightsViewSet.as_view()),
-    path('it/', views.ITInsightsViewSet.as_view()),
-    path('education/', views.EducationInsightsViewSet.as_view())
+    path('finance/', views.FinanceInsightsViewSet.as_view(), name="financial-insights"),
+    path('it/', views.ITInsightsViewSet.as_view(), name="it-insights"),
+    path('education/', views.EducationInsightsViewSet.as_view(), name="education-insights")
 ]

@@ -1,11 +1,12 @@
-from django.test import TestCase, Client
-from core.utils import content_file_name
-from core.models import MyProfile
-from core.permissions import IsAdminOrReadOnly
-from rest_framework.permissions import BasePermission, SAFE_METHODS
 from django.contrib.auth import get_user_model
-from unittest.mock import patch, MagicMock
+from django.test import TestCase
+from rest_framework.test import APIClient
+from django.urls import reverse
+from rest_framework import status
 
+from core.permissions import IsAdminOrReadOnly
+
+COMPANIES_URL = reverse("api:companies-list")
 
 class TestIsAdminOrReadOnly(TestCase):
 
@@ -21,8 +22,6 @@ class TestIsAdminOrReadOnly(TestCase):
             password="test1234",
         )
         self.permission = IsAdminOrReadOnly()
-        self.request = MagicMock(user=MagicMock())
-        self.view = MagicMock()
 
 
     def test_superuser_has_no_admin_or_read_only_permission(self):
@@ -32,4 +31,25 @@ class TestIsAdminOrReadOnly(TestCase):
     def test_user_has_no_admin_or_read_only_permission(self):
         admin_permission = self.user.has_perm(IsAdminOrReadOnly)
         self.assertFalse(admin_permission)
+
+    def test_user_cant_access_unsafe_methods(self):
+        payload = {}
+        self.client = APIClient()
+        self.client.force_authenticate(user=self.user)
+        response = self.client.post(COMPANIES_URL, payload)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_user_can_access_safe_methods(self):
+        payload = {}
+        self.client = APIClient()
+        self.client.force_authenticate(user=self.user)
+        response = self.client.get(COMPANIES_URL, payload)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_superuser_can_access_unsafe_methods(self):
+        payload = {}
+        self.client = APIClient()
+        self.client.force_authenticate(user=self.user_superuser)
+        response = self.client.post(COMPANIES_URL, payload)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 

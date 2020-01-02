@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
-from core.views import IndexTemplateView, error_404, error_500
+from core.views import IndexTemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +28,6 @@ urlpatterns = [
     re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = error_404
-handler500 = error_500
+# Replaced by Vue.js
+# handler404 = error_404
+# handler500 = error_500

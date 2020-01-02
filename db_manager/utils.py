@@ -1,12 +1,12 @@
-import os.path
 import csv
-import re
 import json
+import os.path
+import re
+
 import pandas as pd
-from sklearn.preprocessing import MultiLabelBinarizer
 from django.conf import settings
-from core.models import Company
-from django.utils.translation import gettext as _
+from sklearn.preprocessing import MultiLabelBinarizer
+
 from core.models import Company
 
 # FILE PATHS
@@ -24,7 +24,7 @@ def database_upload():
     companies.delete()
 
     if companies_path:
-        with open(companies_path) as f:
+        with open(companies_path, encoding="utf8") as f:
             reader = csv.reader(f)  # skip header
             next(reader, None)
             for row in reader:

@@ -3,7 +3,7 @@ from django.contrib import messages, auth
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from .forms import UserLoginForm, UserRegistrationForm, MyDetailsForm
+from .forms import UserLoginForm, UserRegistrationForm, MyProfileForm
 from core import models
 from user.utils import my_profile
 
@@ -21,7 +21,7 @@ def login(request):
                 messages.success(request, "You have successfully logged in")
                 return redirect('/')
             else:
-                messages.error(request, "Your email or password are incorrect")
+                messages.error(request, "Unable to log you in at this time!")
     else:
         login_form = UserLoginForm()
 
@@ -46,7 +46,7 @@ def register(request):
                 return redirect('/')
 
             else:
-                messages.error(request, "unable to log you in at this time!")
+                messages.error(request, "Unable to log you in at this time!")
     else:
         user_form = UserRegistrationForm()
 
@@ -72,7 +72,7 @@ def profile(request):
 @login_required
 def edit_profile(request):
     my_profile = get_object_or_404(models.MyProfile, owner=request.user)
-    my_details_form = MyDetailsForm(request.POST, request.FILES, instance=my_profile)
+    my_details_form = MyProfileForm(request.POST, request.FILES, instance=my_profile)
     if request.method == 'POST':
         if my_details_form.is_valid():
             my_profile.save()

@@ -35,7 +35,7 @@ class UserRegistrationForm(UserCreationForm):
         return password2
 
 
-class MyDetailsForm(forms.ModelForm):
+class MyProfileForm(forms.ModelForm):
     """User Details"""
     class Meta:
         model = MyProfile
