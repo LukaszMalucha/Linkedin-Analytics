@@ -1,9 +1,10 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
+from core.models import User, MyProfile, Company
 
 
-class UserTests(TestCase):
+class UserModelTests(TestCase):
 
     def setUp(self):
         self.user = get_user_model().objects.create_user(
@@ -23,7 +24,9 @@ class UserTests(TestCase):
         )
 
     def tearDown(self):
-        get_user_model().objects.clear_cache()
+        self.user.delete()
+        self.user_1.delete()
+        self.user_superuser.delete()
 
     #
     # def test_email(self):
@@ -59,6 +62,12 @@ class UserTests(TestCase):
     #     """Test creating user with no password"""
     #     with self.assertRaises(ValueError):
     #         get_user_model().objects.create_user("test3@gmail.com", "")
+
+    # def test_new_user_has_usable_password(self):
+    #     self.assertTrue(self.user.has_usable_password())
+    #
+    # def test_last_login_default(self):
+    #     self.assertIsNone(self.user.last_login)
     #
     # def test_is_active(self):
     #     self.assertTrue(self.user.is_active)
@@ -106,39 +115,52 @@ class UserTests(TestCase):
     #     self.assertFalse(self.user.has_module_perms('test_module'))
 
 
-class MyProfileTest(TestCase):
+# class MyProfileModelTest(TestCase):
+#
+#     def setUp(self):
+#         self.user = get_user_model().objects.create_user(
+#             email="test@gmail.com",
+#             password="test1234",
+#             name="Test User"
+#         )
+#         self.user_1 = get_user_model().objects.create_user(
+#             email="test1@gmail.com",
+#             password="test1234",
+#             name=""
+#         )
+#         self.my_profile = MyProfile.objects.filter(owner__email="test@gmail.com").first()
+#         self.my_profile_1 = MyProfile.objects.filter(owner__email="test1@gmail.com")
+#
+#     def tearDown(self):
+#         self.user.delete()
+#         self.user_1.delete()
+#         self.my_profile.delete()
+#         self.my_profile_1.delete()
+#
+#     def test_my_profile_str(self):
+#         self.assertEqual(str(self.my_profile), "test@gmail.com profile")
+#
+#     def test_my_profile_created(self):
+#         self.assertTrue(self.my_profile_1.exists())
+#
+#     def test_single_profile_created(self):
+#         self.assertEqual(len(MyProfile.objects.filter(owner__email="test@gmail.com")), 1)
+#
+#     def test_my_profile_position(self):
+#         self.assertEqual(self.my_profile.position, "guest")
+#
+#     def test_my_profile_image(self):
+#         self.assertEqual(self.my_profile.image, "portraits/default.jpg")
+#
+#     def test_my_profile_owner(self):
+#         self.assertEqual(str(self.my_profile.owner), "test@gmail.com")
+#
+#     def test_my_profile_verbose_name(self):
+#         self.assertEqual(self.my_profile._meta.verbose_name, "User Profile")
+#
+#     def test_my_profile_verbose_name_plural(self):
+#         self.assertEqual(self.my_profile._meta.verbose_name_plural, "User Profiles")
 
-    def setUp(self):
-        self.user = get_user_model().objects.create_user(
-            email="test@gmail.com",
-            password="test1234",
-            name="Test User"
-        )
-        self.user_1 = get_user_model().objects.create_user(
-            email="test1@gmail.com",
-            password="test1234",
-            name=""
-        )
-
-    def tearDown(self):
-        get_user_model().objects.clear_cache()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class CompanyModelTest(TestCase):
 
 
