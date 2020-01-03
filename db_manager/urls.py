@@ -1,4 +1,5 @@
 from django.urls import path
+
 from db_manager import views
 
 app_name = 'db_manager'

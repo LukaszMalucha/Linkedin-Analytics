@@ -22,8 +22,8 @@ class UserAdmin(BaseUserAdmin):
 
 
 class CompanyModelAdmin(admin.ModelAdmin):
-    list_display = ['name','group']
-    search_fields = ['name',]
+    list_display = ['name', 'group']
+    search_fields = ['name', ]
 
     class Meta:
         model = models.Company
@@ -31,6 +31,7 @@ class CompanyModelAdmin(admin.ModelAdmin):
     list_filter = (
         'group',
     )
+
 
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.MyProfile)

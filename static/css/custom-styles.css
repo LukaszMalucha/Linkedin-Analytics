@@ -295,13 +295,28 @@ a:hover {
       width: 75%;
     }
 
+    .menu-card {
+        width: 90%;
+    }
+
+
+}
+
+@media(max-width:1200px) {
+
+
+    .menu-card .row-comment {
+      height: 36px;
+
+    }
+
 }
 
 
 @media(max-width:1025px) {
 
     .menu-card {
-        width: 70%;
+      width: 90%;
     }
 
 

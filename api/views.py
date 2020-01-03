@@ -1,15 +1,14 @@
-import os
 import json
+import os
+
 from django.conf import settings
-from rest_framework import generics, authentication, permissions, viewsets, status, filters
-from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework import viewsets, status, filters
 from rest_framework.response import Response
-from rest_framework.settings import api_settings
 from rest_framework.views import APIView
-from user.api.serializers import UserSerializer, AuthTokenSerializer
-from core.permissions import IsAdminOrReadOnly
+
 from api import serializers
 from core.models import Company
+from core.permissions import IsAdminOrReadOnly
 
 finance_sector = os.path.join(settings.BASE_DIR, "db_manager/datasets/finance.json")
 it_sector = os.path.join(settings.BASE_DIR, "db_manager/datasets/it.json")

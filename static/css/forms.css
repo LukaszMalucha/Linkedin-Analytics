@@ -13,6 +13,7 @@ body {
     padding-top: 148px;
     width: 70%;
     margin: auto;
+    min-height: 1000px;
 }
 
 .form-signin {

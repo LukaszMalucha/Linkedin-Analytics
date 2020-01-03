@@ -1,7 +1,7 @@
-from django.test import TestCase
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
-from core.models import User, MyProfile, Company
+from django.test import TestCase
+
+from core.models import MyProfile, Company
 
 
 class UserModelTests(TestCase):
@@ -27,7 +27,6 @@ class UserModelTests(TestCase):
         self.user.delete()
         self.user_1.delete()
         self.user_superuser.delete()
-
 
     def test_email(self):
         self.assertEqual(self.user.email, "test@gmail.com")
@@ -161,6 +160,7 @@ class MyProfileModelTest(TestCase):
     def test_my_profile_verbose_name_plural(self):
         self.assertEqual(self.my_profile._meta.verbose_name_plural, "User Profiles")
 
+
 class CompanyModelTest(TestCase):
 
     def setUp(self):
@@ -195,12 +195,3 @@ class CompanyModelTest(TestCase):
 
     def test_my_profile_verbose_name(self):
         self.assertEqual(self.company._meta.verbose_name_plural, "Companies")
-
-
-
-
-
-
-
-
-

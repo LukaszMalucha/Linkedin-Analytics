@@ -139,7 +139,7 @@ USE_TZ = True
 # Static
 # files(CSS, JavaScript, Images)
 # https: // docs.djangoproject.com / en / 2.1 / howto / static - files /
-
+#
 AWS_S3_OBJECT_PARAMETERS = {
     'Expires': 'Fri, 31 Dec 2055 20:00:00 GMT',
     'CacheControl': 'max-age=94608000',

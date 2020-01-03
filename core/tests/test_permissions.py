@@ -1,12 +1,13 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
-from rest_framework.test import APIClient
 from django.urls import reverse
 from rest_framework import status
+from rest_framework.test import APIClient
 
 from core.permissions import IsAdminOrReadOnly
 
 COMPANIES_URL = reverse("api:companies-list")
+
 
 class TestIsAdminOrReadOnly(TestCase):
 
@@ -22,7 +23,6 @@ class TestIsAdminOrReadOnly(TestCase):
             password="test1234",
         )
         self.permission = IsAdminOrReadOnly()
-
 
     def test_superuser_has_no_admin_or_read_only_permission(self):
         admin_permission = self.user_superuser.has_perm(IsAdminOrReadOnly)
@@ -52,4 +52,3 @@ class TestIsAdminOrReadOnly(TestCase):
         self.client.force_authenticate(user=self.user_superuser)
         response = self.client.post(COMPANIES_URL, payload)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-

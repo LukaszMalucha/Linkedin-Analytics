@@ -27,7 +27,3 @@ urlpatterns = [
     path('db/', include('db_manager.urls')),
     re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-# Replaced by Vue.js
-# handler404 = error_404
-# handler500 = error_500

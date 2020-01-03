@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from db_manager.utils import database_upload
 from core.models import Company
+from db_manager.utils import database_upload
 
 
 class DatabaseUploadTests(TestCase):

@@ -1,7 +1,8 @@
-from django.test import TestCase, Client
-from core.utils import content_file_name
-from core.models import MyProfile
 from django.contrib.auth import get_user_model
+from django.test import TestCase
+
+from core.models import MyProfile
+from core.utils import content_file_name
 
 
 class ContentFileTests(TestCase):

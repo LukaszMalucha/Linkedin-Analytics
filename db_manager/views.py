@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
+
 from db_manager.utils import database_upload, sector_insights
 
 

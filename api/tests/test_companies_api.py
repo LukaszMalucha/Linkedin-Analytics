@@ -16,7 +16,7 @@ IT_INSIGHTS_URL = reverse("api:it-insights")
 EDUCATION_INSIGHTS_URL = reverse("api:education-insights")
 
 
-# noinspection PyUnresolvedReferences
+
 class CompaniesApiTests(TestCase):
     """Test the publicly available companies API"""
 
@@ -72,7 +72,6 @@ class FinanceViewTests(TestCase):
         response = self.client.get(FINANCE_URL)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-
     def test_create_financial_company_successful(self):
         """Test creating financial company"""
 
@@ -101,7 +100,6 @@ class ITViewTest(TestCase):
         response = self.client.get(IT_URL)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-
     def test_create_it_company_successful(self):
         """Test creating IT company"""
 
@@ -118,6 +116,7 @@ class ITViewTest(TestCase):
         ).exists()
         self.assertTrue(exist)
 
+
 class EducationViewTest(TestCase):
     """Test IT companies viewset"""
 
@@ -128,7 +127,6 @@ class EducationViewTest(TestCase):
         """Accessing education companies view"""
         response = self.client.get(EDUCATION_URL)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
 
     def test_create_education_company_successful(self):
         """Test creating education company"""
@@ -159,6 +157,7 @@ class FinancialInsightsView(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['sector_strings'], ['Financial Companies', 'finance'])
 
+
 class ITInsightsView(TestCase):
     """Test Financial Insight view"""
 
@@ -171,6 +170,7 @@ class ITInsightsView(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['sector_strings'], ['IT Companies', 'it'])
 
+
 class EducationInsightsView(TestCase):
     """Test Financial Insight view"""
 
@@ -182,4 +182,3 @@ class EducationInsightsView(TestCase):
         response = self.client.get(EDUCATION_INSIGHTS_URL)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['sector_strings'], ['Educational Institutions', 'education'])
-

@@ -23,7 +23,7 @@ export default {
                   color: "rgba(0, 0, 0, 0)",
               },
               ticks: {
-                stepSize: 10
+                stepSize: 20
               }
           }],
 
