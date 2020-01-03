@@ -22,6 +22,8 @@ from core.views import IndexTemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.urls')),
+    path("user/", include("django.contrib.auth.urls")),
+    path("user/", include('allauth.urls')),
     path('api/user/', include('user.api.urls')),
     path('api/', include('api.urls')),
     path('db/', include('db_manager.urls')),

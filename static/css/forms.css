@@ -232,12 +232,6 @@ blockquote {
     MEDIA QUERIES
 ------------------------------------------------*/
 
-
-
-
-
-@media(max-width:1500px) {}
-
 @media(max-width:1500px) {
     .form-signin {
     max-width: 60%;
