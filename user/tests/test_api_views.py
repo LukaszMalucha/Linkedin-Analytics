@@ -9,6 +9,7 @@ from user.api.views import ManageUserView
 CREATE_USER_URL = reverse("api-user:create")
 TOKEN_URL = reverse("api-user:authenticate")
 MY_PROFILE_URL = reverse("api-user:my-account")
+CURRENT_USER_URL = reverse("api-user:current-user")
 
 
 def create_user(**params):
@@ -164,3 +165,19 @@ class PrivateUserApiTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
+class CurrentUserViewTests(TestCase):
+
+    def setUp(self):
+        self.user = create_user(
+            email="test@gmail.com",
+            password="test1234",
+            name="Test Name"
+        )
+        self.client = APIClient()
+        self.client.force_authenticate(user=self.user)
+
+    def test_retrieve_current_user_success(self):
+        """Test retrieving current user info"""
+
+        response = self.client.get(CURRENT_USER_URL)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
