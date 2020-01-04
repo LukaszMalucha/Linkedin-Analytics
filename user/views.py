@@ -39,8 +39,6 @@ def register(request):
 
             if user:
                 auth.login(request, user)
-                models.MyProfile.objects.get_or_create(owner=user)
-
                 messages.success(request, "You have successfully registered")
                 return redirect('/')
 
