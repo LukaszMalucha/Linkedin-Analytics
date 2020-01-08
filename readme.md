@@ -132,6 +132,9 @@ Docker | Heroku | Travis CI | AWS S3
 ##### Database Development:
 Postgres | SQLite
 
+##### Web Scraping:
+scrapy | selenium
+
 ##### Testing
 django.test | coverage
 
