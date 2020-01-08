@@ -1,1 +1,0 @@
-web: gunicorn linkedin_analytics.wsgi:application
