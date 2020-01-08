@@ -22,4 +22,5 @@ class ContentFileTests(TestCase):
         self.my_profile.delete()
 
     def test_content_file_name(self):
-        self.assertEqual(self.filename, "portraits\\1-portrait.jpg")
+        self.assertEqual(str(self.filename)[10:], "1-portrait.jpg")
+

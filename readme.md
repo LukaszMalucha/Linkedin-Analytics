@@ -105,21 +105,35 @@ Apply Property Value Estimator algorithm via RESTFul Api.
 -----------------
 
 
+### App Testing:
+
+##### Travis CI: [![Build Status](https://travis-ci.com/LukaszMalucha/Linkedin-Analytics.svg?branch=master)](https://travis-ci.com/LukaszMalucha/Linkedin-Analytics)
+##### `/api/tests/`
+##### `/core/tests/` 
+##### `/db_manager/tests/`
+##### `/user/tests/`
+
+-----------------
 
 ## TOOLS, MODULES & TECHNIQUES
 
+##### Backend Development:
+Django RESTful
 
-##### Web Development:
-Django | Django RESTful | Vue.js | Heroku | Bootstrap | Materialize | AWS S3
+##### Data Analysis
+pandas | numpy | scikit-learn
+
+##### Frontend Development
+Vue.js | Materialize | Chart.js
+
+##### Deployment
+Docker | Heroku | Travis CI | AWS S3
 
 ##### Database Development:
 Postgres | SQLite
 
-##### Python & JS – data analysis & visualisation:
-pandas | numpy | scikit-learn | vuechart.js
-
 ##### Testing
-Django.test
+django.test | coverage
 
 ##### LinkedIn API with Python 
 https://github.com/ozgur/python-linkedin

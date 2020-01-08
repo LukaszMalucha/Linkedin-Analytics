@@ -149,7 +149,7 @@ class MyProfileModelTest(TestCase):
         self.assertEqual(self.my_profile.position, "guest")
 
     def test_my_profile_image(self):
-        self.assertEqual(self.my_profile.image, "portraits/default.jpg")
+        self.assertEqual(str(self.my_profile.image)[10:], "default.jpg")
 
     def test_my_profile_owner(self):
         self.assertEqual(str(self.my_profile.owner), "test@gmail.com")
