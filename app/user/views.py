@@ -43,7 +43,7 @@ def register(request):
                 return redirect('/')
 
             else:
-                messages.error(request, "Unable to log you in at this time!")
+                messages.error(request, "Incorrect username or password")
     else:
         user_form = UserRegistrationForm()
 

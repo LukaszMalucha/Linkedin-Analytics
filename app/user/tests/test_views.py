@@ -96,7 +96,7 @@ class LoginUserTests(TestCase):
         response = self.client.post(LOGIN_USER_URL, payload_invalid)
         self.assertEqual(response.status_code, 200)
         messages = list(get_messages(response.wsgi_request))
-        self.assertEqual(str(messages[0]), "Unable to log you in at this time!")
+        self.assertEqual(str(messages[0]), "Incorrect username or password")
 
     def test_user_can_login(self):
         payload = {
