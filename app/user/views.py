@@ -20,7 +20,7 @@ def login(request):
                 messages.success(request, "You have successfully logged in")
                 return redirect('/')
             else:
-                messages.error(request, "Unable to log you in at this time!")
+                messages.error(request, "Incorrect username or password")
     else:
         login_form = UserLoginForm()
 
@@ -43,7 +43,7 @@ def register(request):
                 return redirect('/')
 
             else:
-                messages.error(request, "Incorrect username or password")
+                messages.error(request, "Unable to log you in at this time!")
     else:
         user_form = UserRegistrationForm()
 
