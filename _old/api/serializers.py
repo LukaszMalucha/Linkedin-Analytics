@@ -4,7 +4,7 @@ from core.models import Company
 
 
 class CompanySerializer(serializers.ModelSerializer):
-    """Serializer for Springboard courses"""
+    """Serializer for LinkedIn comapnies"""
 
     class Meta:
         model = Company
