@@ -1,10 +1,10 @@
 <template>
 <div class="row plain-element">
   <div class="row header">
-          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left plain-element">
+          <div class="col s1 text-left plain-element">
               <img src="https://linkedin-analytics.s3-eu-west-1.amazonaws.com/static/img/insights/finance-medium.jpg" class="img responsive img-header">
           </div>
-          <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 plain-element">
+          <div class="col s11 plain-element">
               <div class="row summary">
                    <div class="box">
                       <h5>{{ companiesType }} Listing </h5>
@@ -24,17 +24,17 @@
   </div>
   <div class="dashboard-cards">
       <div class="row row-cards">
-          <div v-for="(company, i) in filteredList" class="col-xs-12 col-sm-4 col-md-4 col-lg-3 plain-element" :key="i">
+          <div v-for="(company, i) in filteredList" class="col s12 m4 l3 plain-element" :key="i">
             <div class="card company-card">
                 <div class="card-header">
                    <div class="row plain-element">
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3  plain-element">
+                        <div class="col s3  plain-element">
                             <div class="card-image">
                                 <img :src="company.squareLogoUrl"
                                      class="img responsive">
                             </div>
                             </div>
-                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 plain-element">
+                        <div class="col s9 plain-element">
                         <div class="card-title text-left">
                             <h5>{{ company.name | truncate(50) }}</h5>
                             <table class="table table-company">

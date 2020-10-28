@@ -6,14 +6,18 @@
 }
 
 
+strong {
+    font-weight: 600;
+}
+
 .navbar-header a {
 	font-size: 12px;
 	letter-spacing: 1px;
 	line-height: 40px;
 	margin-top: 0px;
-	font-weight: 400;
 	display: block;
 	color: #ffffff;
+
 }
 
 .top-navbar {
@@ -71,7 +75,7 @@
   float: left;
   font-size: 18px;
   margin-right: 5px;
-  margin-top: -3px;
+  margin-top: 6px;
   height: auto;
   background: #0077b5;
   padding: 3px 3px 3px 3px;
@@ -97,7 +101,7 @@
 }
 
 .navbar-default .navbar-brand:hover {
-	color: #003252;
+	color: #ffffff;
 }
 
 .navbar-default .navbar-brand:hover .navbar-default .navbar-brand:focus {
@@ -180,7 +184,7 @@ nav ul a:hover {
 nav ul li:hover,
 nav ul li:active {
 	background: transparent;
-	color: #919932;
+	color: #ffffff;
 }
 
 
@@ -188,7 +192,7 @@ nav ul li:active {
 .nav>li>a:focus,
 .nav>li>a:active {
 	background-color: transparent;
-	color: #003252;
+	color: #ffffff;
 }
 
 .navbar-right>a:hover,

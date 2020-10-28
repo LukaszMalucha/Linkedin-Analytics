@@ -5,7 +5,7 @@
 
     </div>
     <div class="row row-cards">
-        <div class="col-md-4">
+        <div class="col s12 m4 l4">
             <div class="card menu-card">
                 <div class="card-top">
                     <i class="fas fa-chart-bar"></i> Financial Sector
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col s12 m4 l4">
             <div class="card menu-card">
                 <div class="card-top">
                     <i class="fa fa-laptop"></i> IT Sector
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col s12 m4 l4">
             <div class="card menu-card">
                 <div class="card-top">
                     <i class="fa fa-graduation-cap"></i> Educational Institutions

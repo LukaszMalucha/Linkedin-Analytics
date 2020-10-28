@@ -1,10 +1,10 @@
 <template>
 <div class="row plain-element">
   <div class="row header">
-          <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 text-left plain-element">
+          <div class="col s1 text-left plain-element">
               <img src="https://linkedin-analytics.s3-eu-west-1.amazonaws.com/static/img/insights/education-medium.jpg" class="img responsive img-header">
           </div>
-          <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 plain-element">
+          <div class="col s11 plain-element">
               <div class="row summary">
                    <div class="box">
                       <h5>{{ companyCategory }} Insights </h5>
@@ -19,7 +19,7 @@
   </div>
   <div class="dashboard-cards">
       <div class="row row-cards">
-          <div class="col-sm-3 col-md-3 col-lg-3 plain-element">
+          <div class="col s3 plain-element">
               <div class="row plain-element no-margin-bottom">
                   <div class="card insights-card insights-card-narrow-left" id="establishedCard">
                       <div class="card-header">
@@ -69,7 +69,7 @@
               </div>
           </div>
 
-          <div class="col-sm-6 col-md-6 col-lg-6 plain-element">
+          <div class="col s6 plain-element">
               <div class="row plain-element">
                   <div class="card insights-card insights-card-middle">
                       <div class="card-header">
@@ -101,7 +101,7 @@
                   </div>
               </div>
           </div>
-          <div class="col-sm-3 col-md-3 col-lg-3 plain-element">
+          <div class="col s3 plain-element">
               <div class="card insights-card insights-card-narrow-right" id="tableSpecialities">
                   <div class="card-header">
                       <img src="https://linkedin-analytics.s3-eu-west-1.amazonaws.com/static/img/insights/education-small.jpg" class="img-responsive">

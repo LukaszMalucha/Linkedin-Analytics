@@ -143,6 +143,8 @@ table {
 .insights-card .row-comment {
     padding: 3px 8px 3px 8px;
     margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
     color: color: rgba(0,0,0,.75);
 }
 
