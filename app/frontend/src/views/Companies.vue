@@ -7,7 +7,7 @@
           <div class="col s11 plain-element">
               <div class="row summary">
                    <div class="box">
-                      <h5>{{ companiesType }} Listing </h5>
+                      <h5>{{ getTitle() }} Listing </h5>
                       <router-link class="btn-algorithm" :to="{ name: category }">
                         Sector Insights
                       </router-link>
@@ -23,7 +23,7 @@
 
   </div>
   <div class="dashboard-cards">
-      <div class="row row-cards">
+      <div v-if="getCompanies" class="row row-cards">
           <div v-for="(company, i) in filteredList" class="col s12 m4 l3 plain-element" :key="i">
             <a target="_blank" :href="company.websiteUrl">
               <div class="card company-card">
@@ -93,23 +93,41 @@ export default {
   },
   data() {
     return{
-      search: '',
+      search: "",
     }
   },
   methods: {
-    ...mapGetters(['getCompanies', ]),
-    ...mapActions(['fetchCompanies',]),
+    ...mapGetters(["getCompanies", "getTitle"  ]),
+    ...mapActions(["fetchCompanies", "fetchTitle"]),
     fetchCompaniesData(category) {
-      this.fetchCompanies(category)
+      this.fetchCompanies(category);
+      this.fetchTitle(category);
     }
 
   },
   computed: {
+//  Search company function
+    filteredList() {
+      return this.getCompanies().filter(company => {
+        return company.name.toLowerCase().includes(this.search.toLowerCase()) ||
+               company.industries.toLowerCase().includes(this.search.toLowerCase()) ||
+               company.companyType.toLowerCase().includes(this.search.toLowerCase()) ||
+               company.specialities.toLowerCase().includes(this.search.toLowerCase()) ||
+               company.foundedYear.toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
+  },
+  filters: {
+      truncate (value, limit) {
+          if (value.length > limit) {
+              value = value.substring(0, limit);
+          }
+          return value
+      }
   },
   created() {
-    this.fetchCompaniesData("it");
-//    this.getTitleString();
-//    document.title = "Linkedin Analytics - " + this.companiesType;
+    this.fetchCompaniesData("finance");
+    document.title = "Linkedin Analytics - " + this.getTitle();
   }
 }
 

@@ -7,7 +7,7 @@
           <div class="col s11 plain-element">
               <div class="row summary">
                    <div class="box">
-                      <h5>{{ companyCategory }} Insights </h5>
+                      <h5>{{ getTitle() }} Insights </h5>
                       <router-link class="btn-algorithm" :to="{ name: 'companies', params: { category: category } }">
                         View Companies
                       </router-link>
@@ -137,10 +137,11 @@
 
 
 <script>
-import { apiService } from "@/common/api.service.js";
 import FollowersChart from "@/common/FollowersChart.js";
 import EmployeesChart from "@/common/EmployeesChart.js";
 import TypesChart from "@/common/TypesChart.js";
+import { mapGetters, mapActions } from "vuex";
+
 
 
 export default {
@@ -166,22 +167,14 @@ export default {
     }
   },
   methods: {
-    getSectorData() {
-      let endpoint = "/api/finance/";
-      apiService(endpoint)
-        .then(data =>{
-          this.companyCount = data.count;
-          this.companyCategory = data.sector_strings[0];
-          this.category = data.sector_strings[1];
-          this.oldestTenCompanies = data.oldest_10_dict;
-          this.specialties = data.spec_dict;
-          this.followersCount = data.followers_dict;
-          this.employeeCount = data.e_count_dict;
-          this.companyTypes = data.type_dict;
-          this.fillCompanyTypesChart();
-          this.fillFollowersCountChart();
-          this.fillEmployeeCountChart();
-        })
+    ...mapGetters(["getCompanies", "getTitle", "getCompanyCount", "getCompanyCategory",  "getOldestTenCompanies", "getSpecialties", "getFollowersCount", "getEmployeeCount", "getCompanyTypes" ]),
+    ...mapActions(["fetchSectorData", "fetchTitle"]),
+    getSectorData(category) {
+      this.fetchSectorData(category);
+      this.fetchTitle(category);
+      this.fillCompanyTypesChart();
+      this.fillFollowersCountChart();
+      this.fillEmployeeCountChart();
     },
     fillFollowersCountChart() {
       var dataset = this.followersCount
@@ -235,7 +228,7 @@ export default {
     }
   },
   created() {
-    this.getSectorData();
+    this.getSectorData("finance");
     document.title = "Linkedin Analytics - Financial Companies";
   }
 };
