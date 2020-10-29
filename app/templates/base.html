@@ -68,10 +68,8 @@
   </nav>
 
 <div class="topnav">
-    <a class="navbar-brand" href="/">
-      <img src="{% static 'img/logo-dark.png' %}" alt="Logo"
-           class="img-logo"/>
-    </a>
+    <a class="navbar-brand waves-effect waves-dark" href="/"><i
+              class="fab fa-linkedin-in"></i></a>
     <div id="myLinks">
       <a href="/api/">REST Api</a>
       <a target="_blank" href="https://github.com/LukaszMalucha/Springboard-Insights">GitHub</a>
@@ -86,7 +84,7 @@
       <a href="{% url 'account_signup' %}">Register</a>
       {% endif %}
     </div>
-    <a href="javascript:void(0);" class="icon" onclick="myDropdown()">
+    <a href="javascript:void(0);" class="icon" onclick="dropdown()">
       <i class="fa fa-bars"></i>
     </a>
   </div>
@@ -109,6 +107,9 @@
 
 <!-- Materialize Js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Custom Js -->
+<script src="{% static 'js/custom-scripts.js' %}"></script>
 
 {% block js %}
 {% endblock %}

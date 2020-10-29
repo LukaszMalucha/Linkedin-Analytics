@@ -266,9 +266,13 @@ nav ul li:active {
 .topnav {
   display: none;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: #003f67;
   position: relative;
 
+}
+
+.topnav .fab {
+  margin-top: 0px !important;
 }
 
 
@@ -278,7 +282,7 @@ nav ul li:active {
 
 
 .topnav a {
-  color: black;
+  color: #ffffff;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 16px;
@@ -320,8 +324,8 @@ nav ul li:active {
 
 
 .topnav .active {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #ffffff;
+  color: #003f67;
 }
 
 
