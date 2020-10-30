@@ -6,7 +6,7 @@
 
       </div>
       <div class="row row-cards">
-          <div class="col s12 m4 l4">
+          <div class="col s12 m6 l4">
               <div class="card menu-card">
                   <div class="card-top">
                       <i class="fas fa-chart-bar"></i> Financial Sector
@@ -30,16 +30,15 @@
                       <div class="row row-image">
                           <img src="https://linkedin-analytics.s3.amazonaws.com/static/img/finance.jpg" class="img-responsive img-card">
                       </div>
-                      <router-link :to="{name: 'finance'}">
-                      <button class="btn btn-enter"><span>Continue <i
-                              class="far fa-arrow-alt-circle-right"></i></span></button>
+                      <router-link :to="{ name: 'sector', params: { category: 'finance' } }">
+                        <button class="btn btn-enter"><span>Continue <i class="far fa-arrow-alt-circle-right"></i></span></button>
                       </router-link>
                   </div>
                   <div class="card-bottom">
                   </div>
               </div>
           </div>
-          <div class="col s12 m4 l4">
+          <div class="col s12 m6 l4">
               <div class="card menu-card">
                   <div class="card-top">
                       <i class="fa fa-laptop"></i> IT Sector
@@ -63,16 +62,15 @@
                       <div class="row row-image">
                           <img src="https://linkedin-analytics.s3.amazonaws.com/static/img/it.jpg" class="img-responsive img-card">
                       </div>
-                      <router-link :to="{name: 'it'}">
-                      <button class="btn btn-enter"><span>Continue <i
-                              class="far fa-arrow-alt-circle-right"></i></span></button>
+                      <router-link :to="{ name: 'sector', params: { category: 'it' } }">
+                        <button class="btn btn-enter"><span>Continue <i class="far fa-arrow-alt-circle-right"></i></span></button>
                       </router-link>
                   </div>
                   <div class="card-bottom">
                   </div>
               </div>
           </div>
-          <div class="col s12 m4 l4">
+          <div class="col s12 m6 l4">
               <div class="card menu-card">
                   <div class="card-top">
                       <i class="fa fa-graduation-cap"></i> Educational Institutions
@@ -97,9 +95,8 @@
                       <div class="row row-image">
                           <img src="https://linkedin-analytics.s3.amazonaws.com/static/img/college.jpg" class="img-responsive img-card">
                       </div>
-                      <router-link :to="{name: 'education'}">
-                      <button class="btn btn-enter"><span>Continue <i
-                              class="far fa-arrow-alt-circle-right"></i></span></button>
+                      <router-link :to="{ name: 'sector', params: { category: 'education' } }">
+                        <button class="btn btn-enter"><span>Continue <i class="far fa-arrow-alt-circle-right"></i></span></button>
                       </router-link>
                   </div>
                   <div class="card-bottom">

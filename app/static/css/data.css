@@ -504,18 +504,19 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) {
 
 }
 
-@media(max-width:767px) {
+@media(max-width:992px) {
 
     .insights-card {
       font-size: 12px;
-      width: 100%;
-      margin: 10px 0px;
+      width: 96%;
+      margin: 10px 2%;
+
     }
 
     .insights-card-narrow-left,
-    insights-card-narrow-right {
-      width: 100%;
-      margin: 10px 0px;
+    .insights-card-narrow-right {
+      width: 96%;
+      margin: 10px 2%;
 
     }
 }

@@ -53,7 +53,7 @@ body {
 .btn-login:hover,
 .btn-login:active,
 .btn-login:focus {
-	background-color: #6d8f36;
+	background-color: #002f4e;
 }
 
 /*----------------------------------------------
@@ -301,12 +301,19 @@ blockquote {
 ------------------------------------------------*/
 
 @media(max-width:1500px) {
+
 	.form-signin {
 		max-width: 60%;
 	}
+
 	#page-index {
 		padding-top: 0px;
 	}
+
+  .form-user {
+		max-width: 60%;
+	}
+
 }
 
 @media(max-width:859px) {

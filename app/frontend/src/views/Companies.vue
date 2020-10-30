@@ -8,7 +8,7 @@
               <div class="row summary">
                    <div class="box">
                       <h5>{{ getTitle() }} Listing </h5>
-                      <router-link class="btn-algorithm" :to="{ name: category }">
+                      <router-link class="btn-algorithm" :to="{ name: 'sector', params: { category: category } }">
                         Sector Insights
                       </router-link>
                   </div>

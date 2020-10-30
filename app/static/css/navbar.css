@@ -5,6 +5,9 @@
 	border-radius: 0px;
 }
 
+.nav i {
+  height: auto;
+}
 
 strong {
     font-weight: 600;
@@ -178,7 +181,7 @@ nav ul a {
 
 nav ul a:hover {
 	background-color: #fff;
-	color: #919932;
+	color: #ffffff;
 }
 
 nav ul li:hover,
@@ -211,7 +214,7 @@ nav ul li:active {
   text-transform: uppercase;
   padding: 0px 0px 0px 20px;
   height: 14px;
-	margin: 14px 0px;
+	margin: 13px 0px;
   background: none !important;
   border: none;
   cursor: pointer;
@@ -301,7 +304,7 @@ nav ul li:active {
 }
 
 .topnav .nav-button:hover {
-  color: #919932;
+  color: #ffffff;
 }
 
 
@@ -315,7 +318,7 @@ nav ul li:active {
 }
 
 .topnav a:hover {
-  color: #919932;
+  color: #ffffff;
 }
 
 .topnav .navbar-brand {
@@ -367,6 +370,12 @@ nav ul li:active {
   .topnav {
     display: block;
   }
+
+  .topnav .navbar-brand {
+      width: 30%;
+  }
+
+
 
 }
 

@@ -12,23 +12,23 @@
                         View Companies
                       </router-link>
                   </div>
-                  <h6>Sector Companies: <b class="counter">{{ companyCount }}</b></h6>
+                  <h6>Sector Companies: <b class="counter">{{ getCompanyCount() }}</b></h6>
               </div>
           </div>
 
   </div>
   <div class="dashboard-cards">
       <div class="row row-cards">
-          <div class="col s3 plain-element">
+          <div class="col s12 m6 l3 plain-element">
               <div class="row plain-element no-margin-bottom">
                   <div class="card insights-card insights-card-narrow-left" id="establishedCard">
                       <div class="card-header">
                           <img src="https://linkedin-analytics.s3-eu-west-1.amazonaws.com/static/img/insights/finance-small.jpg" class="img-responsive">
-                          <p><b>Linkedin Analytics</b> <br>{{ companyCategory }} </p>
+                          <p><b>Linkedin Analytics</b> <br>{{ getTitle() }} </p>
 
                       </div>
                       <div class="row row-comment">
-                          {{ companyCategory }} with tradition:
+                          {{ getTitle() }} with tradition:
                       </div>
 
                       <div class="row-image">
@@ -42,7 +42,7 @@
                                   </thead>
                                   <tbody>
 
-                                  <tr v-for="(company, i) in oldestTenCompanies" :key="i">
+                                  <tr v-for="(company, i) in getOldestTenCompanies()" :key="i">
                                       <td>{{ company ["name"]}}</td>
                                       <td class="center">{{ company ["foundedYear"]}}</td>
                                   </tr>
@@ -57,31 +57,31 @@
                   <div class="card insights-card insights-card-narrow-left" id="smallCard">
                       <div class="card-header">
                           <img src="https://linkedin-analytics.s3-eu-west-1.amazonaws.com/static/img/insights/finance-small.jpg" class="img-responsive">
-                          <p><b>Linkedin Analytics</b> <br>{{ companyCategory }} </p>
+                          <p><b>Linkedin Analytics</b> <br>{{ getTitle() }} </p>
                       </div>
                       <div class="row row-comment">
-                          {{ companyCategory }} followers:
+                          {{ getTitle() }} followers:
                       </div>
                       <div class="chart-small">
-                          <followers-chart  :chart-data="followersCountData" :styles="chartStyles"></followers-chart>
+                          <followers-chart  :chart-data="getFollowersCountData()" :styles="chartStyles"></followers-chart>
                       </div>
                   </div>
               </div>
           </div>
 
-          <div class="col s6 plain-element">
+          <div class="col s12 m6 l6 plain-element">
               <div class="row plain-element">
                   <div class="card insights-card insights-card-middle">
                       <div class="card-header">
                           <img src="https://linkedin-analytics.s3-eu-west-1.amazonaws.com/static/img/insights/finance-small.jpg" class="img-responsive">
-                          <p><b>Linkedin Analytics</b> <br>{{ companyCategory }} </p>
+                          <p><b>Linkedin Analytics</b> <br>{{ getTitle() }} </p>
 
                       </div>
                       <div class="row row-comment">
-                          {{ companyCategory }} by type:
+                          {{ getTitle() }} by type:
                       </div>
                       <div class="chart">
-                          <types-chart  :chart-data="companyTypesData" :styles="chartStyles"></types-chart>
+                          <types-chart  :chart-data="getCompanyTypesData()" :styles="chartStyles"></types-chart>
                       </div>
                   </div>
               </div>
@@ -89,26 +89,26 @@
                   <div class="card insights-card insights-card-middle">
                       <div class="card-header">
                           <img src="https://linkedin-analytics.s3-eu-west-1.amazonaws.com/static/img/insights/finance-small.jpg" class="img-responsive">
-                          <p><b>Linkedin Analytics</b> <br>{{ companyCategory }} </p>
+                          <p><b>Linkedin Analytics</b> <br>{{ getTitle() }} </p>
 
                       </div>
                       <div class="row row-comment">
-                          {{ companyCategory }} by employee count:
+                          {{ getTitle() }} by employee count:
                       </div>
                       <div class="chart">
-                          <employees-chart  :chart-data="employeeCountData" :styles="chartStyles"></employees-chart>
+                          <employees-chart  :chart-data="getEmployeeCountData()" :styles="chartStyles"></employees-chart>
                       </div>
                   </div>
               </div>
           </div>
-          <div class="col s3 plain-element">
+          <div class="col s12 m6 l3 plain-element">
               <div class="card insights-card insights-card-narrow-right" id="tableSpecialities">
                   <div class="card-header">
                       <img src="https://linkedin-analytics.s3-eu-west-1.amazonaws.com/static/img/insights/finance-small.jpg" class="img-responsive">
-                      <p><b>Linkedin Analytics</b> <br>{{ companyCategory }}</p>
+                      <p><b>Linkedin Analytics</b> <br>{{ getTitle() }}</p>
                   </div>
                   <div class="row row-comment">
-                      {{ companyCategory }} by specialties:
+                      {{ getTitle() }} by specialties:
                   </div>
                   <div class="row-image">
                       <div class="table-responsive">
@@ -120,7 +120,7 @@
                               </tr>
                               </thead>
                               <tbody>
-                              <tr  v-for="(key, value, i) in specialties" :key="i">
+                              <tr  v-for="(key, value, i) in getSpecialties()" :key="i">
                                   <td>{{ value }}</td>
                                   <td class="center">{{ key }}</td>
                               </tr>
@@ -151,73 +151,28 @@ export default {
     EmployeesChart,
     TypesChart,
   },
+  props: {
+    category: {
+    type: String,
+    required: true
+    }
+  },
   data() {
     return {
-      category: "",
       companyCategory: "",
-      companyCount: null,
-      oldestTenCompanies: [],
-      specialties: {},
-      followersCount: {},
-      followersCountData: {},
-      employeeCountData: {},
-      companyTypesData: {},
-      employeeCount: {},
-      companyTypes: {},
     }
   },
   methods: {
-    ...mapGetters(["getCompanies", "getTitle", "getCompanyCount", "getCompanyCategory",  "getOldestTenCompanies", "getSpecialties", "getFollowersCount", "getEmployeeCount", "getCompanyTypes" ]),
+    ...mapGetters(["getTitle", "getCompanyCount", "getCompanyCategory",
+                    "getOldestTenCompanies", "getSpecialties", "getFollowersCount",
+                    "getEmployeeCount", "getCompanyTypes", "getFollowersCountData",
+                    "getEmployeeCountData","getCompanyTypesData"]),
     ...mapActions(["fetchSectorData", "fetchTitle"]),
     getSectorData(category) {
-      this.fetchSectorData(category);
+      this.fetchSectorData(category)
       this.fetchTitle(category);
-      this.fillCompanyTypesChart();
-      this.fillFollowersCountChart();
-      this.fillEmployeeCountChart();
     },
-    fillFollowersCountChart() {
-      var dataset = this.followersCount
-      var dataLabels = Object.keys(dataset)
-      var dataValues = Object.values(dataset)
-      this.followersCountData = {
-        labels: dataLabels,
-        datasets: [
-          {
-            backgroundColor: ["#4e79a7", "#f28e2b"],
-            data: dataValues
-          }
-        ]
-      }
-    },
-    fillEmployeeCountChart() {
-      var dataset = this.employeeCount
-      var dataLabels = Object.keys(dataset)
-      var dataValues = Object.values(dataset)
-      this.employeeCountData = {
-        labels: dataLabels,
-        datasets: [
-          {
-            backgroundColor: ["#2b5b89","#356899", "#5789b6", "#7bb0d5", "#89bddc", "#90c3df", "#98c8e2", "#9ccae3", "#9ccae3"],
-            data: dataValues
-          }
-        ]
-      }
-    },
-    fillCompanyTypesChart() {
-      var dataset = this.companyTypes
-      var dataLabels = Object.keys(dataset)
-      var dataValues = Object.values(dataset)
-      this.companyTypesData = {
-        labels: dataLabels,
-        datasets: [
-          {
-            backgroundColor: ["#4e79a7","#f28e2b", "#e15759", "#76b7b2", "#59a14f", "#edc948"],
-            data: dataValues
-          }
-        ]
-      }
-    }
+
   },
   computed: {
     chartStyles () {
@@ -228,7 +183,7 @@ export default {
     }
   },
   created() {
-    this.getSectorData("finance");
+    this.getSectorData(this.category);
     document.title = "Linkedin Analytics - Financial Companies";
   }
 };

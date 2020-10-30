@@ -256,8 +256,8 @@ a:hover {
 
 
 .plain-element {
-    margin: 0px;
-    padding: 0px;
+    margin: 0px !important;
+    padding: 0px !important;
 }
 
 /*------------------------------------------------------------------------------
@@ -371,6 +371,10 @@ a:hover {
 }
 
 @media(max-width:600px) {
+
+    #page-index {
+       top: 0px;
+    }
 
     .header {
         height: 90px;

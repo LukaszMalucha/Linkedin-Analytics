@@ -7,7 +7,6 @@ export default {
   },
   getSectorData(category) {
     let endpoint = `/api/${category}/`;
-    window.console.log(endpoint);
     return apiService(endpoint);
   }
 }
