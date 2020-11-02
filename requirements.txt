@@ -1,6 +1,6 @@
 boto3==1.9.115
 dj-database-url==0.5.0
-Django==2.2
+Django==2.2.13
 django-allauth==0.40.0
 django-cors-headers==3.3.0
 django-environ==0.4.5
