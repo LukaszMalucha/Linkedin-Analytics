@@ -107,7 +107,6 @@ Apply Property Value Estimator algorithm via RESTFul Api.
 
 ### App Testing:
 
-##### Travis CI: [![Build Status](https://travis-ci.com/LukaszMalucha/Linkedin-Analytics.svg?branch=master)](https://travis-ci.com/LukaszMalucha/Linkedin-Analytics)
 ##### `/api/tests/`
 ##### `/core/tests/` 
 ##### `/db_manager/tests/`
