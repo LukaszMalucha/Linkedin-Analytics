@@ -5,6 +5,7 @@ django-allauth==0.40.0
 django-cors-headers==3.3.0
 django-environ==0.4.5
 dj-rest-auth==1.1.0
+django-materializecss-form==1.1.12
 django-storages==1.7.1
 django-webpack-loader==0.6.0
 djangorestframework==3.9.1
