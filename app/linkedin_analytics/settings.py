@@ -203,7 +203,7 @@ if not DEBUG:
 
     STATIC_LOCATION = "static"
     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/"
-    STATICFILES_STORAGE = "data_collector.storage_backends.StaticStorage"
+    STATICFILES_STORAGE = "linkedin_analytics.storage_backends.StaticStorage"
 
     # s3 public media settings
 
