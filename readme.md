@@ -123,7 +123,7 @@ Django RESTful
 pandas | numpy | scikit-learn
 
 ##### Frontend Development
-Vue.js | Materialize | Chart.js
+Vue.js | Vuex | Materialize | Chart.js
 
 ##### Deployment
 Docker | Heroku | Travis CI | AWS S3
