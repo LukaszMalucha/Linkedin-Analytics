@@ -139,10 +139,3 @@ django.test | coverage
 
 ##### LinkedIn API with Python 
 https://github.com/ozgur/python-linkedin
-
-<br>
-<br>
-
-##### Thank you,
-
-Lukasz Malucha
