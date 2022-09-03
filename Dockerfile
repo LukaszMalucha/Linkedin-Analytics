@@ -28,8 +28,6 @@ RUN useradd -ms /bin/bash admin
 RUN mkdir /app
 
 COPY ./app/ /app
-COPY ./scripts /scripts
-RUN chmod +x /scripts/*
 WORKDIR /app
 RUN chown -R admin:admin /app
 RUN chmod 755 /app
