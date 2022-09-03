@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Linkedin Analytics - Irish Companies Insights | Septellar</title>
+  <meta name="Description"
+        content="Django interface for LinkedIn API data extraction. Easily adjustable functionality, with REST API backend and Vue.js frontend.
+               Database hosts Irish companies (location: Ireland) from three sectors: financial, IT & education.
+               Find out more with statistical data dashboard about a sector or search for more information regarding chosen company.">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Fonts-->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Materialize-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- FontAwesome Styles-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+        integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+  <!-- Custom Styles-->
+  <link href="{% static 'css/custom-styles.css' %}" rel="stylesheet"/>
+  <link href="{% static 'css/navbar.css' %}" rel="stylesheet"/>
+  <link href="{% static 'css/data.css' %}" rel="stylesheet"/>
+
+
+  {% block extrahead %}{% endblock %} {% block head_js %} {% endblock head_js %}
+
+</head>
+
+<body>
+<div id="wrapper">
+  <!-- TOP NAVBAR -->
+  {% block navbar %}
+  <nav class="navbar navbar-default top-navbar" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand waves-effect waves-dark" href="/"><i
+              class="fab fa-linkedin-in"></i><strong>LinkedIn Analytics</strong></a>
+    </div>
+    <ul class="nav navbar-top-links navbar-right">
+      <li><a class="nav-link" href="/api/"><i class="fas fa-terminal"></i><b>REST Api</b></a>
+      </li>
+      <li><a class="nav-link" target="_blank"
+             href="https://www.lukaszmalucha.com"><i class="fab fa-github"></i>
+        <b>GitHub</b></a></li>
+      {% if user.is_authenticated %}
+      <li>
+        <form method="post" action="{% url 'account_logout' %}">
+          {% csrf_token %}
+          <span><button class="nav-button"><b>Logout</b></button></span>
+        </form>
+      </li>
+      {% else %}
+
+      <li>
+        <div class="dropdown">
+          <button class="dropbtn nav-button"><i class="fas fa-caret-down"></i><b>Login/Register</b></button>
+          <div id="myDropdown" class="drop-content">
+            <a href="{% url 'account_login' %}"><b>Log In</b></a>
+            <a href="{% url 'account_signup' %}"><b>Register</b></a>
+          </div>
+        </div>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <div class="topnav">
+    <a class="navbar-brand waves-effect waves-dark" href="/"><i
+            class="fab fa-linkedin-in"></i></a>
+    <div id="myLinks">
+      <a href="/api/">REST Api</a>
+      <a target="_blank" href="https://github.com/LukaszMalucha/Springboard-Insights">GitHub</a>
+      {% if user.is_authenticated %}
+      <form method="post" action="{% url 'account_logout' %}">
+        {% csrf_token %}
+        <span><button class="nav-button">Logout</button></span>
+      </form>
+
+      {% else %}
+      <a href="{% url 'account_login' %}">Log In</a>
+      <a href="{% url 'account_signup' %}">Register</a>
+      {% endif %}
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="dropdown()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  {% endblock %}
+
+  <!-- PAGE-INDEX-->
+  <div id="page-index">
+    {% block content %}
+
+    {% endblock %}
+
+  </div>
+  <!-- /. INDEX  -->
+</div>
+<!-- /. WRAPPER  -->
+<div class="footer">
+  <p><a target="_blank" href="https://www.freeprivacypolicy.com/privacy/view/9b972ff9a2aaeda03f07216c15625791/">Privacy
+    Policy</a> • © 2019 - 2020 www.unflasked.com - All Rights Reserved • Powered by Septellar&trade;</p>
+</div>
+
+<!-- Materialize Js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Custom Js -->
+<script src="{% static 'js/custom-scripts.js' %}"></script>
+
+{% block js %}
+{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,420 @@
+/*----------------------------------------------
+    COMMON  STYLES    
+------------------------------------------------*/
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    position: relative;
+    margin: 0;
+    padding-bottom: 0;
+    background-color: #f5f5f5;
+
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: scroll;
+
+}
+
+
+#page-index {
+    width: 100%;
+    display: block;
+    overflow: auto;
+    position: relative;
+    top: 40px;
+
+}
+
+#page-index a {
+    text-decoration: none;
+    outline: 0;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+
+/*------------------------------------------------------------------------------
+    Row Header
+------------------------------------------------------------------------------*/
+
+.header {
+    height: 150px;
+    margin: 0px;
+    background: white;
+    padding: 0 15% 0 15%;
+}
+
+.img-header {
+    position:relative;
+    height: 120px;
+    margin-top: 15px;
+}
+
+.summary {
+    height: 150px;
+    padding: 15px 30px;
+    color: #333333 !important;
+    margin: 0px;
+
+}
+
+.summary b {
+    color: #003f67;
+    font-size: 1.4rem;
+}
+
+.header-small {
+    height: 120px;
+}
+
+a {
+    color: #4267b2
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.overflow_hidden {
+    overflow: hidden !important;
+}
+
+.transparent {
+    background: transparent;
+}
+
+.btn-algorithm {
+    border-radius: 10px;
+    margin-left: 40px;
+    height: 24px;
+    width: auto;
+    background: #4e79a7;
+    padding: 0px 10px 0px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-top: 6px;
+    color: white;
+}
+
+.btn-algorithm:hover,
+.btn-algorithm:focus,
+.btn-algorithm:active {
+    color: white;
+    background: #f28e2b;
+}
+
+
+/*------------------------------------------------------------------------------
+    Alert
+------------------------------------------------------------------------------*/
+
+#alert,
+#alertSuccess {
+    display: none;
+}
+
+.alert {
+  padding: 6px;
+  border: 1px solid transparent;
+  position: absolute;
+  width: 100%;
+  height: 32px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  text-align: center;
+}
+
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+
+}
+
+
+/*----------------------------------------------
+    MENU CARD
+------------------------------------------------*/
+
+.menu-card {
+    box-shadow: 1px 1px 2px 2px #A9A9A9;
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    float: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.menu-card:hover {
+    box-shadow: 0 3px 3px 0 #2d4b65, 0 3px 2px -2px #2d4b65, 0 2px 5px 0 #2d4b65;
+}
+
+.menu-card .card-top {
+    padding: 1% 3% 1% 3%;
+    color: rgba(0,0,0,.9);
+    border-bottom: 1px solid rgba(0,0,0,.15);
+
+}
+
+.menu-card .card-top i {
+    font-size: 16px;
+}
+
+
+.menu-card .card-header {
+   display: flex;
+   align-items:left;
+   padding: 2% 3% 2% 3%;
+   height: 48px;
+   width: 100%;
+}
+
+
+.menu-card .card-header b {
+    font-size: 0.9rem;
+    color: black;
+    font-weight: 600
+}
+
+.menu-card .card-header p {
+    margin-left: 1%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 0.7rem;
+    color: #666666;
+    line-height: 1.2;
+    width:80%;
+}
+
+.dots {
+    color: #666666;
+}
+
+.menu-card .card-content {
+    padding: 0px !important;
+}
+
+.menu-card .row-comment {
+    padding: 2% 3% 2% 3%;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    color: color: rgba(0,0,0,.75);
+}
+
+
+.menu-card  .row-image {
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0% 3% 0% 3%;
+}
+
+.row-subject {
+    padding: 3%;
+    background: #f3f6f8;
+    color: black !important;
+    margin-bottom: 0px;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0px;
+}
+
+
+.img-card {
+  width: 100%;
+}
+
+
+.plain-element {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+/*------------------------------------------------------------------------------
+    FOOTER
+------------------------------------------------------------------------------*/
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 12px;
+    color: #868e96;
+    padding: 15px 0px;
+    text-align: center;
+}
+
+.footer a {
+    color: #868e96;
+}
+
+.footer a:hover,
+.footer a:focus,
+.footer a:active {
+    color: #4f84ae;
+    text-decoration: none;
+}
+
+/*----------------------------------------------
+    MEDIA QUERIES
+------------------------------------------------*/
+
+
+@media(max-width:1700px) {
+
+    .header  {
+        padding: 0 1% 0 1%;
+    }
+
+    .menu-card {
+      width: 80%;
+    }
+
+}
+
+
+
+@media(max-width:1361px) {
+
+    .summary {
+      padding: 15px 50px;
+    }
+
+    .menu-card .card-header p {
+      width: 75%;
+    }
+
+    .menu-card {
+        width: 90%;
+    }
+
+
+}
+
+@media(max-width:1200px) {
+
+
+    .menu-card .row-comment {
+      height: 36px;
+
+    }
+
+}
+
+
+@media(max-width:1025px) {
+
+    .menu-card {
+      width: 90%;
+    }
+
+
+    .menu-card .card-content b{
+        font-size: 11px;
+
+    }
+
+    .btn-algorithm {
+        margin-left: 10px;
+        height: 24px;
+        font-size: 12px;
+        padding: 0px 6px 0px 6px;
+        line-height: 24px;
+        margin-top: 6px;
+        color: white;
+    }
+
+
+}
+
+@media(max-width:800px) {
+
+    .summary {
+      padding: 15px 70px;
+    }
+}
+
+@media(max-width:600px) {
+
+    #page-index {
+       top: 0px;
+    }
+
+    .header {
+        height: 90px;
+
+    }
+
+    .header-small {
+      height: 40px;
+    }
+
+    .img-header {
+        position:relative;
+        height: 60px;
+        margin-top: 15px;
+    }
+
+    .summary {
+        height: 90px;
+        padding: 15px 0px 15px 40px;
+
+    }
+
+    .summary h5, h6 {
+        font-size: 0.9rem;
+        margin: 5px 0px;
+    }
+
+    .counter {
+        font-size: 0.9rem;
+        margin: 5px 0px;
+    }
+
+    .btn-algorithm {
+      font-size: 10px;
+      height: 18px;
+      line-height: 18px;
+      margin-top: 0px;
+      margin-left: 5px;
+    }
+}
+
+
+
